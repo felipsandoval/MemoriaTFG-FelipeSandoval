@@ -788,7 +788,7 @@ Para finalizar la ejecución de \textbf{duplicateScripts.py}, se ejecuta la func
 
 \subsection{most\_frequent\_blocks.py}
 
-Este script toma como argumento un fichero JSON, e itera sobre sus elementos para buscar y contabilizar los \textit{opcodes} de los bloques que más se repiten. Luego, ordena los bloques por frecuencia de uso y los guarda en un nuevo archivo JSON: \textbf{blocks.json}. Se puede apreciar el diagrama del funcionamiento del script en la imagen \ref{fig:flow_mostfreq}
+Este script toma como argumento un fichero JSON, e itera sobre sus elementos para buscar y contabilizar los \textit{opcodes} de los bloques que más se repiten. Luego, ordena los bloques por frecuencia de uso y los guarda en un nuevo archivo JSON: \textbf{blocks.json}. Se le asignara un caracter a cada bloque según su frecuencia de repetición. Al bloque mas repetido le corresponde la primera letra del abecedario y así sucesivamente completando la cadena de caracteres definida en la variable \textit{characters}. Se puede apreciar el diagrama del funcionamiento del   en la imagen \ref{fig:flow_mostfreq}
 
 
 %\begin{figure}
@@ -812,7 +812,7 @@ Este script toma como argumento un fichero JSON, e itera sobre sus elementos par
 
 \subsection{statistics.py}
 
-Este script analiza los ficheros JSON generados por el código de \textbf{duplicateScripts.py} con ayuda de los módulos \textit{counter}, \textit{defaultdict} y \textit{json}. Luego, la función \textbf{json2dna} carga el contenido del fichero \textbf{blocks.json} en el diccionario blocks\_dict y, a continuación, define la variable \textit{characters} que contiene todos los caracteres posibles. La función itera sobre cada elemento de la lista de duplicados y si el elemento no está en el diccionario del \textit{blocks.json}, se le asigna un nuevo caracter a dicho bloque. Luego, el código recorre una lista de duplicados y, para cada script en la lista, asigna una nueva letra a cada bloque que no tenga una asignada.
+Este script analiza los ficheros JSON generados por el código de \textbf{duplicateScripts.py} con ayuda de los módulos \textit{counter}, \textit{defaultdict} y \textit{json}. Luego, la función \textbf{json2dna} carga el contenido del fichero \textbf{blocks.json} en el diccionario blocks\_dict y, a continuación, define la variable \textit{characters} que contiene todos los caracteres posibles. La función itera sobre cada elemento de la lista de duplicados y si el elemento no está en el diccionario del \textit{blocks.json}, se le asigna un nuevo caracter a dicho bloque. Luego, se añade al diccionario de scripts, cada secuencia de bloques con los caracteres correspondientes asignados en blocks\_dict.
 
 Luego se añade el elemento al final de la lista block\_list. Finalmente, la lista block\_list se convierte en una cadena y se añade a la lista scripts. 
 
