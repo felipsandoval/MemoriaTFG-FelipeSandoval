@@ -812,7 +812,7 @@ Este script toma como argumento un fichero JSON, e itera sobre sus elementos par
 
 \subsection{statistics.py}
 
-Este script analiza los ficheros JSON generados por el código de \textbf{duplicateScripts.py} con ayuda de los módulos \textit{Counter}, \textit{defaultdict} y \textit{json}. Luego, la función \textbf{json2dna} carga el contenido del fichero \textbf{blocks.json} en el diccionario blocks\_dict y, a continuación, define la variable \textit{characters} que contiene todos los caracteres posibles. La función itera sobre cada elemento de la lista de duplicados y si el elemento no está en el diccionario del \textit{blocks.json}, se le asigna un nuevo caracter a dicho bloque. Luego, el código recorre una lista de duplicados y, para cada script en la lista, asigna una nueva letra a cada bloque que no tenga una asignada.
+Este script analiza los ficheros JSON generados por el código de \textbf{duplicateScripts.py} con ayuda de los módulos \textit{counter}, \textit{defaultdict} y \textit{json}. Luego, la función \textbf{json2dna} carga el contenido del fichero \textbf{blocks.json} en el diccionario blocks\_dict y, a continuación, define la variable \textit{characters} que contiene todos los caracteres posibles. La función itera sobre cada elemento de la lista de duplicados y si el elemento no está en el diccionario del \textit{blocks.json}, se le asigna un nuevo caracter a dicho bloque. Luego, el código recorre una lista de duplicados y, para cada script en la lista, asigna una nueva letra a cada bloque que no tenga una asignada.
 
 Luego se añade el elemento al final de la lista block\_list. Finalmente, la lista block\_list se convierte en una cadena y se añade a la lista scripts. 
 
