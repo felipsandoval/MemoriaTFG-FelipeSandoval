@@ -429,7 +429,7 @@ Este proyecto se apoya en una serie de bibliotecas y módulos de Python. A conti
 \subsection{Sys}
 \label{sec:sys}
 
-Módulo que permite interactuar con los parámetros y funciones específicas del sistema. Es usado para solicitar argumentos por consola y para detener la ejecución del programa mostrando un mensaje por pantalla.
+Módulo que permite interactuar con los parámetros y funciones específicas del sistema. Es usado para solicitar argumentos por consola y para detener la ejecución del programa mostrando un mensaje por pantalla. También es usado para la registrar información de los mensajes de error en el fichero de log de eventos.
 
 \subsection{Os}
 \label{sec:os}
@@ -444,17 +444,17 @@ Módulo que ofrece varias operaciones de alto nivel en archivos y colecciones de
 \subsection{ZipFile}
 \label{sec:zipfile}
 
-Módulo que permite el manejo de archivos con extensión de tipo ZIP. Se usa para abrir, descomprimir y extraer ficheros dentro de un archivo ZIP.
+Módulo que permite el manejo de archivos con extensión de tipo ZIP. Se usa para abrir, descomprimir y extraer ficheros dentro de este tipo de contenedores.
 
 \subsection{JSON}
 \label{sec:jsonmodule}
 
-Módulo que ofrece la posibilidad de manipular ficheros de tipo JSON. Es usado para parsear\footnote{Proceso de analizar una secuencia de símbolos a fin de determinar su estructura gramatical definida. También llamado análisis de sintaxis.} los elementos del fichero JSON de cada proyecto Scratch.
+Módulo que ofrece la posibilidad de manipular ficheros de tipo JSON. Es usado para \textit{parsear}\footnote{Proceso de analizar una secuencia de símbolos a fin de determinar su estructura gramatical definida. También llamado análisis de sintaxis.} los elementos del fichero JSON de cada proyecto Scratch.
 
 \subsection{Logging}
 \label{sec:logging}
 
-Módulo que define funciones y clases para implementar un sistema de registro de eventos de log para aplicaciones y bibliotecas. Es usado para generar un fichero program\_logs.txt donde se mostrará información relevante de la ejecución del programa. Es en este fichero donde se escribirán los errores y se detallará sobre la causa del fallo.
+Módulo que define funciones y clases para implementar un sistema de registro de eventos de log para aplicaciones y bibliotecas. Se usa para generar el fichero \textbf{program\_logs.txt} que mostrará información relevante de la ejecución del programa. Es en este fichero donde se escribirán errores de ejecución y se detallará sobre la causa del fallo.
 
 \subsection{Traceback}
 \label{sec:traceback}
@@ -464,12 +464,12 @@ Módulo que copia el comportamiento del intérprete de Python cuando muestra una
 \subsection{difflib}
 \label{sec:difflib}
 
-Módulo que implementa clases y funciones que ayudan a computar y trabajar con diferencias entre secuencias. Es especialmente útil comparando texto e incluye funciones que brindan información usando varios formatos de diferencia comunes.
+Módulo que implementa clases y funciones que ayudan a computar y trabajar con diferencias entre secuencias. Es especialmente útil para comparar texto e incluyen funciones que usan diversos algoritmos para lograr obtener esta información.
 
 \subsubsection{SequenceMatcher}
 \label{sec:difflib_SequenceMatcher} 
 
-Clase flexible que se usa para comparar pares de secuencias de cualquier tipo, siempre y cuando los elementos de la secuencia sean separables. Esta clase implementa un método heurístico. que identifica automáticamente ciertos elementos como no deseados, para ello cuenta cuantas veces aparece cada elemento en la secuencia. Se usa para comparar secuencias en cadenas de caracteres.\footnote{https://towardsdatascience.com/sequencematcher-in-python-6b1e6f3915fc}
+Clase flexible que se usa para comparar pares de secuencias de cualquier tipo, siempre y cuando los elementos de la secuencia sean separables. Esta clase implementa un método heurístico que identifica automáticamente ciertos elementos como no deseados, para ello cuenta cuantas veces aparece cada elemento en la secuencia. Se usa para comparar secuencias en cadenas de caracteres.\footnote{https://towardsdatascience.com/sequencematcher-in-python-6b1e6f3915fc}
 
 \subsection{collections}
 \label{sec:collections}
@@ -479,12 +479,12 @@ Este módulo implementa tipos de datos que proporcionan alternativas a los conte
 \subsubsection{counter}
 \label{sec:difflib_counter}
 
-Es una subclase del tipo de datos \textit{dict} para contar objetos separables. Los elementos se almacenan como llaves de diccionario y sus conteos se almacenan como valores de diccionario. Se permite que los conteos sean cualquier valor entero, incluidos los conteos a cero o negativos.
+Es una subclase del tipo de datos \textit{dict} para contar objetos separables. Los elementos se almacenan como llaves y sus conteos se almacenan como valores de diccionario. Se permite que los conteos sean cualquier valor entero, incluidos los conteos a cero o negativos.
 
 \subsubsection{defaultdict}
 \label{sec:difflib_defaultdict}
 
-Es una subclase del tipo de datos \textit{dict} que anula un método y añade una variable de instancia editable a través de una función de factory para suministrar valores faltantes. Funciona de forma parecida a los diccionarios clásicos de Python.
+Es una subclase del tipo de datos \textit{dict} que anula un método y añade una variable de instancia editable a través de una función para suministrar valores faltantes. Funciona de forma parecida a los diccionarios clásicos de Python.
 
 \subsubsection{ordereddict}
 \label{sec:difflib_ordereddict}
@@ -494,12 +494,12 @@ Es una subclase del tipo de datos \textit{dict} que tiene métodos especializado
 \subsection{sklearn}
 \label{sec:sklearn}
 
-Este módulo es usado para ejecutar funciones y clases de \textit{Machine Learning} construidas sobre SciPy. \footnote{https://scikit-learn.org/stable/modules/classes.html} Cuenta con algoritmos de clasificación, regresión, clustering y reducción de dimensionalidad. Además, presenta la compatibilidad con otras librerías de Python como NumPy y matplotlib.
+Este módulo es usado para ejecutar funciones y clases de \textit{Machine Learning} construidas sobre SciPy. \footnote{https://scikit-learn.org/stable/modules/classes.html} Cuenta con algoritmos de clasificación, regresión, clustering y reducción de dimensionalidad. Además, es compatible con otras librerías de Python como NumPy y matplotlib.
 
 \subsubsection{cluster}
 \label{sec:sklearn_cluster}
 
-Es una subclase que reúne diferentes algoritmos de agrupación no supervisada \textit{(unsupervised clustering)}. En este trabajo se hará uso del algoritmo \textbf{AffinityPropagation} ya que se evidencia que su uso es más óptimo en comparación con otros algoritmos. FALTA POR EXPLICAR Y DESARROLLAR. En la imagen \ref{fig:comparativa_algoritmos} se puede ver una comparativa visual sobre los distintos clasificadores de múltiples algoritmos. 
+Es una subclase que reúne diferentes algoritmos de agrupación no supervisada \textit{(unsupervised clustering)}. En este trabajo se hará uso del algoritmo \textbf{AffinityPropagation} ya que se evidencia que su uso es más óptimo en comparación con otros algoritmos. En la imagen \ref{fig:comparativa_algoritmos} se puede ver una comparativa visual sobre los distintos clasificadores de múltiples algoritmos. 
 
 \begin{figure}[!h]
     \centering
@@ -511,7 +511,7 @@ Es una subclase que reúne diferentes algoritmos de agrupación no supervisada \
 \section{Hairball} 
 \label{sec:Hairball}
 
-Hairball en un plugin de Python que analiza proyectos de Scratch, ofreciendo a su salida información para el usuario relacionada con el nivel de habilidades del pensamiento computacional, como abstracción, paralelismo, lógica, sincronización, control de flujo, interactividad con el usuario y representación de los datos.
+Hairball en un plugin de Python que analiza proyectos de Scratch, ofreciendo a su salida información acerca del nivel de habilidades del pensamiento computacional, como abstracción, paralelismo, lógica, sincronización, control de flujo, interactividad con el usuario y representación de los datos.
 
 El modulo hairball permite generar una representacion en formato de grafo de los datos de un programa en Python. Esto es útil para visualizar el flujo de datos y el funcionamiento del programa.
 
@@ -520,7 +520,7 @@ También otorga información sobre malos hábitos de programación cómo código
 \section{Pip} 
 \label{sec:pip}
 
-Pip es un gestor de paquetes para el ecosistema de Python que es capaz de instalar y administrar paquetes mediante línea de comandos. Es el gestor con el que se han instalado todos los módulos y bibliotecas incluidos en este proyecto que no trae por defecto Python. Pip suele estar incluido al instalar Python, sin embargo, podría no ser así por lo que sería necesario su descarga. \footnote{https://pypi.org/project/pip/}
+Pip es un gestor de paquetes para el ecosistema de Python que es capaz de instalar y administrar paquetes mediante línea de comandos. Es el gestor con el que se han instalado todos los módulos y bibliotecas que no trae por defecto Python. Pip suele estar incluido al instalar Python, sin embargo, podría no ser así por lo que sería necesario su descarga. \footnote{https://pypi.org/project/pip/}
 
 \section{Unittest} 
 \label{sec:unittest}
@@ -529,17 +529,15 @@ Unittest es una herramienta empleada para realizar tests en Python, tanto para c
 
 \begin{itemize}
 	\item \textbf{Test fixture}: es la preparación del entorno de todas las características del test que queremos ejecutar.
-	\item \textbf{Test case}: es la unidad individual del test, nos permite generar un test unitario para testear cada una de los proyect
-	\item \textbf{Test suite}: es la colección de los test cases que se ejecutan y agrupan juntos, también puede existir una coleccion de test suites. Ejecutar una suite es lo mismo que ejecutar una serie de test cases ejecutándolos individualmente.
-	\item \textbf{Test runner}: es el componente encargado de ejecutar nuestros tests y proporciona un resultado. Puede disponer de una interfaz gráfica, texto o devolver un valor especial que indique el resultado de las pruebas.
+	\item \textbf{Test case}: es la unidad individual del test, nos permite generar un test unitario para testear cada función.
+	\item \textbf{Test suite}: es la colección de los test cases que se ejecutan y agrupan juntos, también puede existir una coleccion de test suites. Ejecutar una suite es lo mismo que ejecutar una serie de test cases individualmente.
+	\item \textbf{Test runner}: es el componente encargado de ejecutar los tests y proporcionar un resultado. Puede disponer de una interfaz gráfica, texto o devolver un valor especial.
 \end{itemize}
-
-FALTA POR DESARROLLAR. 
  
-Para iniciar la ejecución de un test con el módulo unittest se puede hacer ejecutando la siguiente orden mediante línea de comandos:
+Para ejecutar el conjunto de test desarrollados en este proyecto es necesario ejecutar la siguiente orden en línea de comandos:
 
 \begin{lstlisting}[style=consola,numbers=none]
-$ python -m unittest tests/test_something.py
+$ python3 -m unittest discover
 \end{lstlisting}
 
 \section{Guía de estilo PEP8} 
