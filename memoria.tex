@@ -247,20 +247,22 @@ En este trabajo se busca ponderar la relación entre el desarrollo de la abstrac
 \section{Contexto Personal}
 \label{sec:contexto}
 
-Como alumno del Grado de Ingeniería en Sistemas Audiovisuales y Multimedia (ISAM) he adquirido distintas competencias durante los años de carrera. Las asignaturas de programación son las que mayor interés suscitaron en mí, así que después de unos años en los que, por motivos profesionales me alejé de este campo, se me presentó la oportunidad de desarrollar software libre enfocado en aplicaciones con carácter pedagógico.
+Como alumno del Grado de Ingeniería en Sistemas Audiovisuales y Multimedia (GISAM) he adquirido distintas competencias durante los años de carrera. Las asignaturas de programación son las que mayor interés suscitaron en mí, así que después de unos años en los que, por motivos profesionales me alejé de este campo, se me presentó la oportunidad de desarrollar software libre enfocado en aplicaciones con carácter pedagógico.
 
 \section{Motivación}
 \label{sec:motivacion}
 
-Según se ha podido comprobar en la literatura científica \cite{baxter_yahin} a mayor existencia de duplicidad de código menos se usa la abstracción, lo que ocasiona una mala síntesis en la descomposición de problemas.  Los proyectos de Scratch hacen uso extensivo del clonado (i.e. copia y pega) lo cuál puede suponer una limitación a la hora de desarrollar distintas habilidades del pensamiento computacional.
+Según se ha podido comprobar en la literatura científica \cite{baxter_yahin} a mayor existencia de duplicidad de código menos se usa la abstracción, lo que ocasiona una mala síntesis en la descomposición de problemas.  Los proyectos de Scratch hacen uso extensivo del clonado (p.ej. copia y pega) lo cuál puede suponer una limitación a la hora de desarrollar distintas habilidades del pensamiento computacional.
 
 Entendemos la abstracción como un proceso científico basado en dos fundamentos:
 \begin{itemize}
- \item Definir un modelo que permita pensar y descomponer un problema fundamental en problemas mas sencillos.
- \item Facilitar la proyección de técnicas que solucionen dichos problemas.
+\item Definir un modelo que permita pensar y descomponer un problema fundamental en problemas mas sencillos.
+\item Facilitar la proyección de técnicas que solucionen dichos problemas.
 \end{itemize}
 
-Los mecanismos de abstracción, según René Zuñiga, \cite{munoz2014abstraccion} son definidos en representación, descomposición y ensamble, utilizados durante la resolución de problemas computacionales en el contexto de programación orientada a niños y adolescentes. 
+Cuando un programa es peque\~{n}o (por ejemplo, cientos de líneas de código), se puede obtener una solución basada en un único componente. Sin embargo, cuando el tama\~{n}o del problema aumenta el ser humano es incapaz de manejar tal cantidad de detalles y es necesaria una descomposición en peque\~{n}as partes independientes. La evolución de las herramientas de programación ha sido acompañada de un creciente uso de este conjunto de conceptos, lo que confirma a esta capacidad como una aproximación efectiva para enfrentarse a problemas de gran complejidad. \cite{garridoabstraccion}
+
+Los mecanismos de abstracción, según René Zuñiga \cite{munoz2014abstraccion} son definidos en representación, descomposición y ensamble, utilizados durante la resolución de problemas computacionales en el contexto de programación orientada a niños y adolescentes. 
 
 Sin embargo, se advierte la necesidad de pensar en dos tipos de soluciones como si se tratase de dos procesos de abstracción distintos, las centradas en el usuario y las centradas en las máquinas. \cite{wing_socialissues}
 
@@ -276,7 +278,7 @@ Este trabajo se divide de la siguiente manera:
   	\item \textbf{Diseño e implementación:} En este capítulo se explica el funcionamiento del programa, desde la arquitectura que sigue hasta la explicación de las funciones y el hilo de ejecución.
   	\item \textbf{Experimentos, validaciones y resultados:} En este capítulo se profundiza en las pruebas realizadas, en los métodos de validación para el funcionamiento del código y en los resultados obtenidos.
   	\item \textbf{Conclusiones:} En este capítulo se muestran los objetivos conseguidos y se reflexiona sobre el futuro del proyecto.
-  	\item \textbf{Apéndice:} En este capítulo se detalla el manual del usuario así comos los requisitos previos necesarios para ejecutar el programa.  
+  	\item \textbf{Apéndice:} En este capítulo se detalla el manual del usuario así comos los requisitos para ejecutar el programa.  
 \end{enumerate}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -318,9 +320,9 @@ Para alcanzar el objetivo principal se han perseguido los siguientes objetivos e
   	\item Diferenciar los bloques definidos por el programa de los definidos por el usuario. \footnote{\url{https://en.scratch-wiki.info/wiki/My_Blocks}}
   	\item Hacer uso de varios algoritmos de agrupamiento para determinar cuál es el mas eficiente en comparación con otros.
   	\item Obtener y representar el nivel de duplicidad de bloques presentes en el código. 	
- 	\item Incluir test unitarios en las prácticas para controlar la calidad del código.  	
+ 	\item Incluir test unitarios para controlar la calidad del código y minimizar la aparación de errores.  	
 	\item Verificar y experimentar, en gran escala, con muchos códigos de Scratch.
-	\item Definir patrones en la detección de duplicidad de código.
+	\item Definir patrones para la detección de duplicidad de código.
 \end{itemize}
 
 \section{Planificación temporal}
@@ -330,7 +332,7 @@ Para alcanzar el objetivo principal se han perseguido los siguientes objetivos e
 %Hay gente que añade un diagrama de GANTT.
 %Lo importante es que quede claro cuánto tiempo llevas (tiempo natural, p.ej., 6 meses) y a qué nivel de %esfuerzo (p.ej., principalmente los fines de semana).
 
-La planificación de este trabajo ha sido bastante atípica si tomamos en cuenta la situación excepcional vivida desde el año 2020, producto de la pandemia causada por la COVID-19. En Marzo del 2021 contacté con Gregorio; mi tutor, y me presentó la idea de un proyecto relacionado con Scratch, sin embargo, no es hasta el mes de Abril que se da inicio con el trabajo investigativo y con el desarrollo de código en Python. Durante los meses de Abril a Mayo nos reunimos de forma telemática una vez a la semana para conversar sobre el estado del proyecto. Se vuelve a retomar el proyecto en para el siguiente curso escolar 2021-2022, trabajando nuevamente en el proyecto desde el mes de septiembre.
+La planificación de este trabajo ha sido bastante atípica si tomamos en cuenta la situación excepcional vivida desde el año 2020, producto de la pandemia causada por la COVID-19. En Marzo del 2021 contacté con Gregorio; mi tutor, y me presentó la idea de un proyecto relacionado con Scratch, sin embargo, no es hasta el mes de Abril que se da inicio con el trabajo investigativo y con el desarrollo de código en Python. Durante los meses de Abril a Mayo nos reunimos de forma telemática una vez a la semana para conversar sobre el estado del proyecto. Se vuelve a retomar el trabajo el siguiente curso escolar 2.021/2.022, comenzando nuevamente desde el mes de septiembre.
 
 A continuación, se puede visualizar en la figura \ref{fig:diagrama_gantt} el itinerario de planificación y desarrollo en un diagrama de Gantt.
 
@@ -342,7 +344,7 @@ A continuación, se puede visualizar en la figura \ref{fig:diagrama_gantt} el it
 \end{figure}
 
 \pagebreak 
-Para facilitar la organización, estructuración y consecución de objetivos se hace uso de la herramienta Trello\footnote{\url{https://trello.com/tfg_felipesandoval/boards}}, allí se dividen las tareas en tres bloques: \textit{Investigativo} (Amarillo), \textit{Desarrollo de código} (Verde) y \textit{Desarrollo de memoria} (Rojo) 
+Para facilitar la organización, estructuración y consecución de objetivos se hace uso de la herramienta Trello\footnote{\url{https://trello.com/tfg_felipesandoval/boards}}, allí se dividen las tareas en tres bloques: \textbf{Investigativo} (Amarillo), \textbf{Desarrollo de código} (Verde) y \textbf{Desarrollo de memoria} (Rojo) 
 
  \begin{figure}[h]
  	 \centering
@@ -381,16 +383,16 @@ Para facilitar la organización, estructuración y consecución de objetivos se 
 \chapter{Estado del arte}
 \label{chap:estado}
 
-En este capítulo se introducirán las bases tecnológicas del trabajo.
+En este capítulo se introducen las bases tecnológicas del trabajo.
 
 \section{Scratch}
 \label{sec:Scratch}
 
-Scratch es un lenguaje de programación creado por el Grupo Lifelong Kindergarten del Laboratorio de Medios del MIT. En scratch se permite programar historias interactivas, videojuegos, felicitaciones, animaciones; entre otros, todo esto a través de un entorno completamente visual que se fundamenta en el uso de personajes, escenarios y bloques gráficos que permiten interactuar entre estos elementos. \cite{arotuma2017programacion}. 
+Scratch es un lenguaje de programación creado por el Grupo Lifelong Kindergarten del Laboratorio de Medios del MIT. En scratch se permite programar historias interactivas, videojuegos, felicitaciones, animaciones; entre otros, todo esto a través de un entorno completamente visual que se fundamenta en el uso de personajes, escenarios y bloques gráficos que permiten interactuar entre estos elementos.
 
 Entre sus cualidades desatacan que es totalmente gratuito, de uso libre, multilenguaje y altamente recomendado para la iniciación de niños y adolescentes en el mundo de la programación. Scratch es, además, una gran comunidad de usuarios de los que se puede aprender y compartir proyectos. Los mayores consumidores de Scratch en el mundo son Estados Unidos y Reino Unido donde los niños que más usan Scratch son los que tienen una edad media entre los 13 y los 16 años.
 
-En Scratch, los objetos se denominan \textit{sprites} y la parte visual es construida por piezas de puzle llamadas \textit{blocks} que al encajar entre sí forman funciones, conocidas como \textit{scripts}. Existen varios categoría de bloques, siendo de especial interes las siguientes: 
+En Scratch, los objetos se denominan \textit{sprites} y la parte visual es construida por piezas de puzle llamadas \textit{blocks} que al encajar entre sí forman funciones, conocidas como \textit{scripts}. Existen varias categorías de bloques, siendo de especial interés las siguientes: 
 
 \begin{itemize}
   	\item \underline{Movimiento}: Usados para mover y girar un objeto por la pantalla.
@@ -402,27 +404,27 @@ En Scratch, los objetos se denominan \textit{sprites} y la parte visual es const
   	\item \underline{Custom blocks}: Bloques definidos por el usuario. A modo de comparativa, son funciones personalizadas que podrán ser invocadas a lo largo del código.
 \end{itemize}
 
-La forma de programar en Scratch permite al usuario aprender rápidamente sin tener que comprender la sintaxis del lenguaje, centrándose en la lógica del programa, lo que mejora la habilidad de abstracción del usuario. \footnote{https://drscratchblog.wordpress.com/2015/04/20/habilidades-de-programacion-abstraccion/} 
+La forma de programar en Scratch permite al usuario aprender rápidamente sin tener que comprender la sintaxis del lenguaje, centrándose en la lógica del programa, lo que mejora la habilidad de abstracción del usuario. \cite{arotuma2017programacion}
 
 \section{JSON}
 \label{sec:Json}
 
 JavaScript Object Notation, mejor conocido como JSON, es un formato ligero de intercambio de datos que puede ser leído por cualquier persona. Este tipo de ficheros almacena información estructurada que es utilizada principalmente para transferir datos entre un servidor y un cliente. \footnote{https://www.json.org/json-en.html}
 
-Tomando como referencia la sintáxis, existen dos elementos centrales en un fichero JSON \textit{Keys y Values}. Las \textit{Keys} o llaves, contienen una secuencia de caracteres rodeados de comillas y los \textit{Values} o claves, son un tipo de datos JSON válido. Puede tener la forma de un array, un string, un boolean, un objeto, un número o de tipo nulo. 
+Tomando como referencia la sintáxis, existen dos elementos centrales en un fichero JSON \textit{Keys y Values}. Las \textit{Keys} o llaves, contienen una secuencia de caracteres rodeados de comillas y los \textit{Values} o claves, son un tipo de datos JSON válido. Puede tener la forma de un array, un diccionario, un string, un boolean, un objeto, un número o de tipo nulo. 
 
-Es importante mencionar el fichero JSON ya que es el principal elemento usado para la extracción y análisis de datos de mi proyecto en Scratch.
+Es importante mencionar el fichero JSON ya que contiene la información necesaria para el análisis de datos de mi proyecto en Scratch.
 
 \section{Python}
 \label{sec:Python}
 
 Es un lenguaje de programación interpretado cuya filosofía hace énfasis en tener una sintaxis sencilla favorecedora al código legible. Se trata así de un lenguaje de programación multiparadigma, ya que soporta la programación orientada a objetos, la programación imperativa y la programación funcional. Python fue creado por Guido van Rossum a finales de los ochenta y su nombre se lo debe a los humoristas británicos \textit{“Monty Python”}. \footnote{https://platzi.com/blog/historia-python/}
 
-Existen tres versiones principales de Python pero las más extendidas son las versiones 2 y 3, siendo la versión 3.10 las última actualización disponible. En este proyecto se hace un uso íntegro de la versión 3.9 de Python. Es importante indicar que las versiones 2 y 3 son incompatibles entre sí por el gran número de diferencias que existen entre ellas.
+Existen tres versiones principales de Python pero las más extendidas son las versiones 2 y 3, siendo la versión 3.10 la última actualización disponible. En este proyecto se hace un uso íntegro de la versión Python 3.9. Cabe recalcar que las versiones 2 y 3 son incompatibles entre sí por el gran número de diferencias que existen entre ellas.
 
 De todos los lenguajes de programación que aprendí a lo largo de la carrera he elegido Python por ser un lenguaje con una sintaxis sencilla, por ser multiplataforma, por su código abierto y, especialmente, por ser fuertemente tipado, ya que facilita la depuración de código y minimiza errores durante su compilación y ejecución.
 
-Este proyecto se apoya en una serie de bibliotecas y módulos de Python que hacen posible realizar el trabajo ejecutado. A continuación se detalla su funcionamiento y  utilidad:
+Este proyecto se apoya en una serie de bibliotecas y módulos de Python. A continuación se enumeran y detallan el funcionamiento de cada uno:
 
 \subsection{Sys}
 \label{sec:sys}
@@ -1019,6 +1021,13 @@ FALTA POR DESARROLLAR.
 
 \cleardoublepage
 \appendix
+\chapter{Disponibilidad del código}
+\label{app:codigo}
+
+El código del trabajo desarrollado se puede encontrar alojado en el siguiente repositorio de GitHub:
+
+\textbf{https://github.com/felipsandoval/duplicatescripts-scratch}
+
 \chapter{Manual de usuario}
 \label{app:manual}
 
