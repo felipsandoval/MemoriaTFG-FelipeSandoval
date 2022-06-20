@@ -153,19 +153,19 @@ mi madre, por su apoyo incondicional.}
 \markboth{AGRADECIMIENTOS}{AGRADECIMIENTOS} % encabezado 
 No ha sido fácil...\\
 
-Salir de mi zona de confort ha sido una de las decisiones más difíciles y, a la vez, más gratificantes que he tomado en mi vida. En el año 2014 decidí embarcarme hacía una de las mejores ciudades en las que he podido vivir, mi querida Madrid. Evidentemente no ha sido fácil dejar atrás a familiares, amigos, costumbres y un largo etcétera, pero cambiar de rutina hizo que me volviese una persona independiente, curiosa y resiliente. 
+Salir de mi zona de confort ha sido una de las decisiones más difíciles y, a la vez, gratificantes que he tomado en mi vida. En el año 2014 decidí embarcarme hacía una de las mejores ciudades en las que he podido vivir, mi querida Madrid. Evidentemente no ha sido fácil dejar atrás a familiares, amigos, costumbres y un largo etcétera, pero cambiar de rutina hizo que me volviese una persona independiente, curiosa y resiliente. 
 
 Quiero agradecer a mis padres por su apoyo, comprensión, entendimiento y soporte. A mi mamá, Flor Marjorie, por siempre estar ahí en cada momento, gracias a ti me convertí en la persona que soy hoy en día. No son suficientes las palabras para expresar mi gratitud, te quiero un mundo. 
 
-Gracias a ti, Nathalie, por escucharme y entenderme, por aguantarme en los momentos difíciles, por ayudarme a desconectar y por nunca dejar que tirase la toalla. Me demostraste que la motivación es importante pero que sin disciplina y sin hábitos de estudio, de poco vale. Estoy seguro que el futuro nos deparará momentos y vivencias memorables que podremos compartir. Te adoro.
+Gracias a ti, Nathalie, por escucharme y entenderme, por tu paciencia en momentos difíciles, por ayudarme a desconectar y por nunca dejar que tirase la toalla. Me demuestras que la motivación es importante pero que sin disciplina y sin hábitos de estudio, de poco vale. Estoy seguro que el futuro nos deparará momentos y vivencias memorables que podremos compartir. Te adoro.
 
-A mis amigos, gracias por comprenderme y por seguir contando conmigo para todos los planes. Son incontables las experiencias vividas y los \textit{tours} que hicimos en casi todas las bibliotecas de Madrid. Gracias por enseñarme que, en equipo, aprender y aprobar una asignatura es más fácil.
+A mis amigos, gracias por su comprensión y por seguir contando conmigo para todos los planes. Son incontables las experiencias vividas y los \textit{tours} que hicimos en casi todas las bibliotecas de Madrid. Gracias por enseñarme que, en equipo, aprender y aprobar una asignatura es más fácil.
 
 Por último quiero agradecer a mi tutor, Gregorio, por brindarme la oportunidad de trabajar junto a él y demostrarme que la enseñanza es un tema de vocación. Con este proyecto he ratificado la importancia de motivar y dotar de herramientas a las generaciones más jóvenes, ya que solo así será posible desarrollar su potencial profesional y humano. Muchas gracias por tu paciencia, amabilidad y tiempo, especialmente porque, a pesar de haber atravesado una pandemia mundial, al final hemos logrado salir adelante con este proyecto.
 
 He sufrido y disfrutado con la experiencia universitaria, conocí personas muy especiales durante esta etapa que han y siguen siendo muy importantes en mi vida. 
 
-Gracias a este viaje cuento con una caja de herramientas que, estoy seguro, me permitirán ejercer y desarrollarme en el apasionante oficio de la ingeniería y el mundo de las TIC.
+Gracias a este viaje cuento con una caja de herramientas que me permitirán ejercer y desarrollarme en el apasionante oficio de la ingeniería y el mundo de las TIC.
 A cualquiera que lea este proyecto, ¡Muchas Gracias!
 \\\\
 Y sí, no ha sido fácil... \textbf{pero volvería a repetirlo}.\\
@@ -180,7 +180,7 @@ En este trabajo se busca desarrollar una herramienta capaz de extraer, estudiar 
 
 Esta idea surge a partir de otras herramientas que evalúan aspectos del pensamiento computacional, el cual abarca habilidades como el racionamiento lógico, la sincronización, el paralelismo, la representación de la información y la abstracción. Es el desarrollo de esta última habilidad la que motiva la ejecución de este trabajo.
 
-La herramienta se desarrolla usando Python y sus diversas librerías como principal tecnología. Se extraerá la información necesaria del fichero con extensión JSON de un proyecto de Scratch para, posteriormente, obtener los datos deseados para el análisis.
+La herramienta se desarrolla usando Python y sus diversas módulos como principal tecnología. Se extraerá la información necesaria del fichero con extensión JSON de un proyecto de Scratch para, posteriormente, obtener los datos del análisis.
 
 %referencia https://www.um.es/ead/red/46/moreno_robles_es.pdf
 
@@ -232,22 +232,22 @@ The tool is developed using Python and its various libraries as the main technol
 
 %No te olvides de echarle un ojo a la página con los cinco errores de escritura más frecuentes\footnote{\url{http://www.tallerdeescritores.com/errores-de-escritura-frecuentes}}.
 
-En este trabajo se busca crear una herramienta que, a partir del análisis de bloques de código en Scratch, pueda dar una visión general sobre la duplicidad de código en un proyecto. Se entenderá por duplicidad de código aquellos bloques que se repitan tanto a nivel \textbf{intra-sprite} como \textbf{intra-proyect}, siendo los baremos de penalización distintos según cada caso. Esto como consecuencia de los límites de la propia aplicación que restringe la re-utilización de código de forma eficiente entre objetos.
+En este trabajo se busca crear una herramienta que, a partir del análisis de bloques de código en Scratch, pueda dar una visión general sobre la duplicidad de código en un proyecto. Se entenderá por duplicidad de código aquellos bloques que se repitan tanto a nivel \textbf{intra-sprite} como \textbf{intra-proyect}, considerando que los baremos de penalización son distintos según cada caso. Esto es así por consecuencia de los límites de la propia aplicación que restringe la re-utilización de código de entre objetos forma eficiente.
 
-Antes que nada, es muy importante entender a \textit{grosso modo} el glosario de Scratch\footnote{\url{https://en.scratch-wiki.info/wiki}}. 
+Antes que nada, es muy importante explicar una serie de conceptos en el glosario de Scratch\footnote{\url{https://en.scratch-wiki.info/wiki}}. 
 \begin{itemize}
- \item Un bloque o \textit{block} es una pieza de código que ejecuta una acción. A nivel visual en la interfaz de Scratch tienen formas de pieza de puzle con distintos colores y funcionalidades. Mas adelante se enumerarán los tipos de bloques.
- \item Un objeto o \textit{sprite} son los objetos de mi proyecto. A nivel visual, un sprite puede ser el fondo de tu escenario o una imagen.
+ \item Un bloque o \textit{block} es una pieza de código que ejecuta una acción. A nivel visual en la interfaz de Scratch, tienen formas de pieza de puzle con distintos colores y funcionalidades. En otro capítulo se detallan los tipos de bloques.
+ \item Un objeto o \textit{sprite} son los objetos de mi proyecto. A nivel visual, un sprite puede ser el fondo de tu escenario o una imagen, a modo de personaje.
  \item Una función o \textit{script} es una colección de bloques. Su orden es muy importantes, ya que determinan cómo los sprites interactúan entre sí, con el escenario y con el usuario, en caso de ser necesario. A nivel visual es una pila de varias piezas de puzle.
  \item Un bloque personalizado o \textit{custom block} son las funciones o \textit{scripts} definidos por el usuario.
 \end{itemize}
 
-En este trabajo se busca ponderar la relación existente entre el desarrollo de la abstracción con la información volcada en los bloques duplicados en el código de Scratch. El análisis de dicho código se realiza por el uso de algoritmos de agrupación mediante el intercambio de mensajes entre puntos de datos. \cite{clusteringpaper}
+En este trabajo se busca ponderar la relación entre el desarrollo de la abstracción con la información volcada por el código de Scratch. El análisis de dicho código se realiza por el uso de algoritmos de agrupación mediante el intercambio de mensajes entre puntos de datos. \cite{clusteringpaper}
 
 \section{Contexto Personal}
 \label{sec:contexto}
 
-Como alumno del Grado de Ingeniería en Sistemas Audiovisuales y Multimedia (ISAM) he adquirido distintas competencias a lo largo de los años de carrera. Las asignaturas de programación son las que mayor interés suscitaron en mí, así que después de unos años en los que, por motivos profesionales me alejé de este campo, decidí volver a intentar adquirir conocimientos desarrollando software libre enfocado en la creación de aplicaciones con carácter pedagógico.
+Como alumno del Grado de Ingeniería en Sistemas Audiovisuales y Multimedia (ISAM) he adquirido distintas competencias durante los años de carrera. Las asignaturas de programación son las que mayor interés suscitaron en mí, así que después de unos años en los que, por motivos profesionales me alejé de este campo, se me presentó la oportunidad de desarrollar software libre enfocado en aplicaciones con carácter pedagógico.
 
 \section{Motivación}
 \label{sec:motivacion}
