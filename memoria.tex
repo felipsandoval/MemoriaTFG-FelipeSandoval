@@ -635,7 +635,7 @@ Para poder obtener resultados confiables en múltiples entornos, se compila, eje
   \item \textbf{Github:} Es usada para alojar el código y mantener un control de versiones. Resulta muy útil para dar marcha atrás en caso de errores detectados mientras se avanza en la práctica, esto gracias al seguimiento de los cambios en el código
 \end{itemize}
 
-En el diagrama de flujo de la imagen \ref{fig:diagrama_trabajo} se muestra el entorno y las herramientas usadas.
+En el diagrama de flujo de la imagen \ref{fig:diagrama_trabajo} se puede apreciar un diagrama del entorno y la comunicación entre las herramientas usadas.
 
  \begin{figure}[!h]
     \centering
@@ -651,18 +651,18 @@ En el diagrama de flujo de la imagen \ref{fig:diagrama_trabajo} se muestra el en
 
 %Si tu proyecto es un software, siempre es bueno poner la arquitectura (que es cómo se estructura tu programa a ``vista de pájaro'').
 
-A nivel general, el flujo del funcionamiento del programa es el que se puede apreciar en la imagen \ref{fig:fasedesejecucion}. El script a ejecutar es \textit{program.py} y de allí se irán concatenando llamadas a los siguientes scripts, \textit{duplicatescripts.py}, \textit{most\_frequent\_blocks.py}, \textit{statistics.py} y finalmente, \textit{cluster.py}
+A nivel general, el flujo del funcionamiento del programa es el que se puede apreciar en la imagen \ref{fig:fasedesejecucion}. El script a ejecutar es \textit{program.py} y de allí se irán concatenando llamadas a \textit{duplicatescripts.py}, \textit{most\_frequent\_blocks.py}, \textit{statistics.py} y finalmente, \textit{cluster.py}
 
-\begin{figure}
+\begin{figure}[!htb]
   \centering
-  \includegraphics[width=15cm, keepaspectratio]{img/flow.jpg}
+  \includegraphics[width=17cm, keepaspectratio]{img/flow.jpg}
   \caption{Fase de extracción de datos}
   \label{fig:fasedesejecucion}
 \end{figure}
 
-Para ejecutar el software es necesario que el usuario pase por línea de comandos hasta un máximo de dos argumentos. Primero y obligatoriamente, el nombre del archivo a examinar, segundo y de forma opcional, el argumento \textbf{-i} que, de indicarlo, ignorará los bloques indicados en el fichero \textit{IgnoreBlocks.txt}. En caso de pasar más argumentos, el programa mostrará un mensaje de error y creará un fichero de registros en el que se escribirán los eventos que ocurran durante la ejecución.
+Para ejecutar el software es necesario que el usuario pase por línea de comandos hasta un máximo de dos argumentos. Primero y obligatoriamente, el nombre del archivo a examinar, segundo y de forma opcional, el argumento \textbf{-i} que, de indicarlo, ignorará los bloques especificados en el fichero \textit{IgnoreBlocks.txt}. En caso de pasar más argumentos, el programa mostrará un mensaje de error y creará un fichero de registros en el que escribirá los eventos que ocurran durante la ejecución.
 
-Los ficheros a analizar pueden estar en formato SB3 (extensión que emplea Scratch) en formato JSON o un fichero comprimido en formato ZIP. El software se ha desarrollado para ser escalable, por lo que, para realizar un análisis extensivo de muchos proyectos, es necesario comprimir los ficheros JSON en un archivo ZIP. 
+Los ficheros a analizar pueden estar en formato SB3 (extensión que emplea Scratch) en formato JSON o un fichero comprimido en formato ZIP. El software se ha desarrollado para ser escalable, por lo que, para realizar un análisis extensivo de muchos proyectos, es necesario comprimir los ficheros JSON en un contenedor ZIP. 
 
 A continuación, se detallan los scripts, funciones y clases relevantes del software desarrollado.
 
@@ -691,7 +691,7 @@ El contenido del JSON se recorrerá a modo de diccionario, empezando por la clav
 \end{figure}
 
 
-Todas las categorías de bloques suelen tienen una estructura similar pero no todos sus campos son relevantes. Las claves como \textbf{opcode}, \textbf{parent}, \textbf{next} y \textbf{topLevel} son esenciales para la organización y extracción de datos. Otras claves, como \textbf{inputs} y \textbf{mutation} no aparecen en todos los tipos de bloques, sin embargo, son igualmente imprescindibles para obtener el orden correcto en el conjunto de scripts. Es importante enfatizar que el \textit{Block\_ID} es un valor único por bloque, totalmente independiente del \textit{opcode}. A continuación, se enumeran los casos genéricos y particulares considerados:
+Todas las categorías de bloques suelen tener una estructura similar pero no todos sus campos son relevantes. Las claves como \textbf{opcode}, \textbf{parent}, \textbf{next} y \textbf{topLevel} son esenciales para la organización y extracción de datos. Otras claves, como \textbf{inputs} y \textbf{mutation} no aparecen en todos los tipos de bloques, sin embargo, son igualmente imprescindibles para obtener el orden correcto en el conjunto de scripts. Es importante enfatizar que el \textit{Block\_ID} es un valor único por bloque, totalmente independiente del \textit{opcode}. A continuación, se enumeran los casos genéricos y particulares considerados:
 
 \begin{enumerate}
 \item Si el valor de \textbf{topLevel} es True significa que el elemento es el primer bloque de mi script. En este caso el valor de la clave \textbf{parent} es null. 
@@ -790,9 +790,9 @@ Para los bloques personalizados por el usuario, los \textit{custom\_blocks}, se 
 \end{figure}
 
 \newpage 
-Uno de los principales problemas al momento de analizar el JSON ha sido ordenar de forma correcta la estructura de bloques, ya que por defecto no se muestran de forma ordenada. Para lograrlo se crean dos diccionarios: \textit{scripts\_dict} que almacena como valor los bloques de cada sprite y, en el otro diccionario \textit{self.blocks\_dict} que almacena como clave el block\_id de cada bloque y como valor su opcode. Además, este último es vital para insertar bloques según el block\_id del parent que le corresponda.
+Uno de los principales problemas al momento de analizar el JSON ha sido ordenar de forma correcta la estructura de bloques, ya que por defecto no se muestran de forma ordenada. Para lograrlo se crean dos diccionarios: \textit{scripts\_dict} que almacena como valor los bloques de cada sprite y el diccionario \textit{blocks\_dict} que almacena como clave el block\_id de cada bloque y como valor su opcode. Además, este último es esencial para insertar bloques según el block\_id del parent que le corresponda.
 
-Una vez se tiene todos los bloques de cada sprite ordenados, se procede a obtener los bloques duplicados. Esto se logra gracias a la función \textbf{find\_dups}, que toma como argumento una lista de bloques. Puede ser, exclusiva para los bloques de cada objeto(\textit{intra-sprite})o para todos los bloques del proyecto (\textit{wide-project}). La función hace uso de la clase sequenceMatcher para comparar, palabra a palabra, cada bloque entre sí y devolver una lista con los bloque que mas se repitan. 
+Una vez se tiene todos los bloques de cada sprite ordenados se procede a obtener los bloques duplicados. Esto se logra gracias a la función \textbf{find\_dups}, que toma como argumento una lista de bloques. Puede ser, exclusiva para los bloques de cada objeto(\textit{intra-sprite})o para todos los bloques del proyecto (\textit{wide-project}). La función hace uso de la clase sequenceMatcher para comparar, palabra a palabra, cada bloque entre sí y devolver una lista con los bloque que mas se repitan. 
 
 % IMAGEN DE CODIGO, MEJOR NO.
 %\begin{figure}
@@ -822,7 +822,7 @@ Para finalizar la ejecución de \textbf{duplicateScripts.py}, se ejecuta la func
 
 \subsection{most\_frequent\_blocks.py}
 
-Este script toma como argumento un fichero JSON, e itera sobre sus elementos para buscar y contabilizar los \textit{opcodes} de los bloques que más se repiten. Luego, ordena los bloques por frecuencia de uso y los guarda en un nuevo archivo JSON: \textbf{blocks.json}. Se le asignara un caracter a cada bloque según su frecuencia de repetición. Al bloque mas repetido le corresponde la primera letra del abecedario y así sucesivamente completando la cadena de caracteres definida en la variable \textit{characters}. Se puede apreciar el diagrama del funcionamiento del   en la imagen \ref{fig:flow_mostfreq}
+Este script toma como argumento un fichero JSON e itera sobre sus elementos para buscar y contabilizar los \textit{opcodes} de los bloques que más se repiten. Luego, ordena los bloques por frecuencia de uso y los guarda en un nuevo archivo JSON: \textbf{blocks.json} donde le asigna un caracter a cada bloque según su frecuencia de repetición. Al bloque mas repetido le corresponde la primera letra del abecedario y así sucesivamente completando la cadena de caracteres definida en la variable \textit{characters}. Se puede apreciar el diagrama del funcionamiento del script en la imagen \ref{fig:flow_mostfreq}.
 
 
 %\begin{figure}
@@ -834,7 +834,7 @@ Este script toma como argumento un fichero JSON, e itera sobre sus elementos par
 
 \begin{figure}[!htb]
   \centering
-  \includegraphics[width=15cm, keepaspectratio]{img/flow_mostfreq.jpg}
+  \includegraphics[width=14cm, keepaspectratio]{img/flow_mostfreq.jpg}
   \caption{Diagrama de funcionamiento de most\_frequent\_blocks.py}
   \label{fig:flow_mostfreq}
 \end{figure}
@@ -850,8 +850,7 @@ Este script analiza los ficheros JSON generados por el código de \textbf{duplic
 
 Luego se añade el elemento al final de la lista block\_list. Finalmente, la lista block\_list se convierte en una cadena y se añade a la lista scripts. 
 
-
-La función json2dna devuelve la lista y... FALTA POR DESARROLLAR
+La función json2dna devuelve la lista y... POR DESARROLLAR
 
 \begin{figure}[!htb]
   \centering
@@ -865,19 +864,16 @@ La función json2dna devuelve la lista y... FALTA POR DESARROLLAR
 
 \subsection{cluster.py}
 
-Un algoritmo de clusterización es un método para agrupar objetos de tal manera que los objetos en el mismo grupo (cluster) sean similares entre sí, mientras que los objetos en diferentes grupos (clusters) sean lo suficientemente diferentes.
-
-El algoritmo que se emplea es El algoritmo de propagación de afinidad es un algoritmo de aprendizaje automático que se utiliza para encontrar patrones ocultos en datos no estructurados. Se basa en la idea de que los datos que se parecen a unos pocos puntos de datos son más probable que sean similares a otros puntos de datos. El algoritmo se ejecuta en iteraciones, en cada iteración, se seleccionan algunos puntos de datos y se les asignan etiquetas. Luego, el algoritmo busca otros puntos de datos que se parezcan a los puntos de datos etiquetados y les asigna las mismas etiquetas. El algoritmo continúa iterando hasta que todos los puntos de datos hayan sido etiquetados.
-
+El algoritmo que se emplea es el algoritmo de propagación de afinidad es un algoritmo de aprendizaje automático que se utiliza para encontrar patrones ocultos en datos no estructurados. Se basa en la idea de que los datos que se parecen a unos pocos puntos de datos son más probable que sean similares a otros puntos de datos. El algoritmo se ejecuta en iteraciones, en cada iteración, se seleccionan algunos puntos de datos y se les asignan etiquetas. Luego, el algoritmo busca otros puntos de datos que se parezcan a los puntos de datos etiquetados y les asigna las mismas etiquetas. El algoritmo continúa iterando hasta que todos los puntos de datos hayan sido etiquetados.
 
 El código de este script importa la función de levenshtein de la biblioteca distance y la función Counter de la biblioteca collections. Luego, define una función llamada json2dna que toma como argumento un archivo JSON y devuelve los scripts como caracteres. En la función main, el código convierte los scripts en una matriz y luego usa la función de levenshtein para calcular la similitud entre los scripts. Finalmente, el código imprime los resultados del clustering.
 
-FALTA POR DESARROLLAR.
+POR DESARROLLAR.
 
 \section{Visualización de resultados} 
 \label{sec:visualizacionresultados}
 
-Se visualiza los resultados por línea de comando de la siguiente forma:
+Se visualizan los resultados por línea de comando de la siguiente forma:
 
 \begin{lstlisting}[style=consola,numbers=none]
 *** STARTING ANALYSIS  ***
