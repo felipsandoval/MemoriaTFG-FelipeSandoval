@@ -499,23 +499,57 @@ Este módulo es usado para ejecutar funciones y clases de \textit{Machine Learni
 \subsubsection{cluster}
 \label{sec:sklearn_cluster}
 
-Es una subclase que reúne diferentes algoritmos de agrupación no supervisada \textit{(unsupervised clustering)}. En este trabajo se hará uso del algoritmo \textbf{AffinityPropagation} ya que se evidencia que su uso es más óptimo en comparación con otros algoritmos. En la imagen \ref{fig:comparativa_algoritmos} se puede ver una comparativa visual sobre los distintos clasificadores de múltiples algoritmos. 
+Es una subclase que reúne diferentes algoritmos de agrupación no supervisada \textit{(unsupervised clustering)}. Dichos algoritmos ejecutan la tarea de agrupar conjunto de objetos con datos similares en grupos semejantes entre sí. Juega un papel primordial en el análisis de datos exploratorios y ofrece técnicas infalibles para el reconocimiento de patrones. En clustering no existe información a priori de la pertenencia de los patrones a un conjunto de clases predefinida. Esto representa un problema en la evaluación de los resultados obtenidos a través de diferentes métodos.
 
-\begin{figure}[!h]
+Aunque existen muchos algoritmos en esta subclase los más utilizados son K-medias y el algoritmo de propagación de afinidad, esto es así por su alta escalabilidad y su alta tolerancia al ruido. En la imagen \ref{fig:comparativa_algoritmos} se pueden observar los algoritmos incluidos en la subclase cluster, aunque para este proyecto serán de especial interés los siguientes:
+
+\begin{figure}[!htb]
     \centering
     \includegraphics[width=16cm, keepaspectratio]{img/algorithm_comparison.png}
     \caption{Comparativa de algoritmos de clustering}
     \label{fig:comparativa_algoritmos}
 \end{figure}
 
+\begin{itemize}
+\item \textit{Algoritmo de propagación de afinidad (AffinityPropagation)}: Se usa para encontrar grupos de objetos que son similares entre sí. El algoritmo toma como input un conjunto de objetos y un característica de similitud para devolver como output una lista de objetos que están agrupados por coincidencia. En la imagen \ref{fig:affinitypropagation} se puede apreciar un ejemplo del resultado de clasificación.
+\item \textit{Algoritmo de K-medias (K-means)}: Se trata de un método de tipo divisivo, lo que significa que los datos se dividen en grupos más pequeños a medida que avanza el algoritmo. Su objetivo es asignar cada dato a un grupo de tal forma que los elementos dentro de un conjunto sean similares entre sí,  mientras que los datos de otros grupos sean lo más diferentes posible.
+\end{itemize}
+
+En este trabajo se hará uso del algoritmo \textbf{AffinityPropagation} ya que, en teoría, es el mejor en cuanto a homogeneidad, integridad y similitud. \cite{areed2020python}  Para determinar la homogeneidad entre datos se puede trabajar con indicadores de divergencia, o bien utilizar indicadores de la similitud. 
+
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[width=9cm, keepaspectratio]{img/affinitypropagation.jpg}
+    \caption{Ejemplo de clasificación del algoritmo de propagación de afinidad}
+    \label{fig:affinitypropagation}
+\end{figure}
+
+%A mí me gustan las tablas.
+%Mucho.
+%Aquí un ejemplo de tabla, la Tabla~\ref{tabla:ejemplo} (siento ser pesado, pero nota cómo he puesto la referencia).
+
+%\begin{table}
+% \begin{center}
+%  \begin{tabular}{ | l | c | r |} % tenemos tres colummnas, la primera alineada a la izquierda (l), la segunda al centro (c) y la tercera a la derecha (r). El | indica que entre las columnas habrá una línea separadora.
+%    \hline
+%    Uno & 2 & 3 \\ \hline % el hline nos da una línea vertical
+%    Cuatro & 5 & 6 \\ \hline
+%    Siete & 8 & 9 \\
+%    \hline
+%  \end{tabular}
+%  \label{tabla:ejemplo}
+%  \caption{Ejemplo de tabla. Aquí viene una pequeña descripción (el \emph{caption}) del contenido de la tabla. Si la tabla no es autoexplicativa, siempre viene bien aclararla aquí.}
+% \end{center}
+%\end{table}
+
 \section{Hairball} 
 \label{sec:Hairball}
 
-Hairball en un plugin de Python que analiza proyectos de Scratch, ofreciendo a su salida información acerca del nivel de habilidades del pensamiento computacional, como abstracción, paralelismo, lógica, sincronización, control de flujo, interactividad con el usuario y representación de los datos.
+Hairball en un plugin de Python que analiza proyectos de Scratch, ofreciendo a su salida información sobre el nivel de habilidades del pensamiento computacional, como abstracción, paralelismo, lógica, sincronización, control de flujo, interactividad con el usuario y representación de los datos.
 
-El modulo hairball permite generar una representacion en formato de grafo de los datos de un programa en Python. Esto es útil para visualizar el flujo de datos y el funcionamiento del programa.
+El modulo hairball permite generar una representación en formato de grafo de los datos de un programa en Python. Esto es útil para visualizar el flujo de datos y el funcionamiento del programa.
 
-También otorga información sobre malos hábitos de programación cómo código duplicado, código muerto, mal nombrado e inicialización de variables.\footnote{https://pypi.org/project/hairball/}
+También otorga información sobre malos hábitos de programación cómo código duplicado, código muerto, mal nombrado e inicialización de variables. \cite{boe2013hairball}
 
 \section{Pip} 
 \label{sec:pip}
@@ -843,7 +877,7 @@ FALTA POR DESARROLLAR.
 \section{Visualización de resultados} 
 \label{sec:visualizacionresultados}
 
-Se visualiza en el siguiente formato por línea de comandos:
+Se visualiza los resultados por línea de comando de la siguiente forma:
 
 \begin{lstlisting}[style=consola,numbers=none]
 *** STARTING ANALYSIS  ***
@@ -921,9 +955,7 @@ Different blocks: XX
 %Describe los experimentos y casos de test que tuviste que implementar para validar tus resultados. 
 %Incluye también los resultados de validación que permiten afirmar que tus resultados son correctos. 
 
-Hablar de la pruebas de escalabilidad. 
-
-FALTA POR DESARROLLAR.
+POR DESARROLLAR...
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -934,15 +966,13 @@ FALTA POR DESARROLLAR.
 \chapter{Conclusiones}
 \label{chap:conclusiones}
 
-Cuando empecé a aprender a programar en Scratch, una de las cosas que me llamó la atención fue la facilidad con la que se podía duplicar código. Al principio, no entendía realmente la importancia de esto, pero a medida que seguía aprendiendo más sobre este lenguaje, empecé a darme cuenta del impacto que esto podría tener en el desarrollo de la abstracción. La razón por la que el código duplicado es un problema en Scratch es porque es un lenguaje de programación visual. Esto significa que el código no se escribe en texto, sino que se crea encajando bloques de código. Esto hace que sea muy fácil duplicar código por accidente.
+Cuando empecé a aprender a programar en Scratch, una de las cosas que me llamó la atención fue la facilidad con la que se podía duplicar código. Al principio, no entendía realmente la importancia de esto, pero a medida que seguía aprendiendo más sobre este lenguaje, empecé a darme cuenta del impacto que esto tiene en el desarrollo de la abstracción. La razón por la que el código duplicado es un problema en Scratch es porque es un lenguaje de programación visual. Esto significa que el código no se escribe en texto sino que se crea encajando bloques de código, lo que facilita duplicar código por accidente.
 
-La abstracción es el proceso de ocultar complejidad detrás de una interfaz más simple. En Python, esto se consigue normalmente creando funciones o clases. Al abstraer los detalles de una parte concreta del código, hacemos que sea más fácil de entender y reutilizar. En Scratch, es un poco más complicado ya que la propia interfaz nos limita la reutilización de custom\_blocks. Por ejemplo, si creamos una función elemental en el objeto ''personaje'', solamente podremos utilizarla dentro de dicho objeto, obligando a crear nuevamente la función para tantos objetos como se desee la implementen.
+La abstracción es el proceso de ocultar complejidad detrás de una interfaz más simple. En Python, esto se consigue normalmente creando funciones o clases. Al abstraer los detalles de una parte concreta del código, hacemos que sea más fácil de entender y reutilizar. En Scratch, es un poco más complicado ya que la propia interfaz nos limita la reutilización de los bloques personalizados. Por ejemplo, si creamos una función elemental en el objeto ''personaje'' solamente podremos hacer uso de ella dentro de dicho objeto, obligando a crear nuevamente la función tantas veces como objetos se desee la implementen.
 
-Por otro lado, el código duplicado es el que se repite varias veces en un programa. Esto puede ser un gran problema para la mantenibilidad, porque si necesitamos cambiar el código, tendremos que cambiarlo en múltiples lugares, u objetos en este caso. Esto también puede conducir a errores si el código no se actualiza correctamente.
+Por otro lado, el código duplicado es el que se repite varias veces en un programa. Esto puede ser un gran problema para la mantenibilidad porque si necesitamos cambiar el código, tendremos que cambiarlo en múltiples lugares, u objetos en este caso. Esto también puede conducir a errores si el código no se actualiza correctamente. También se ha podido comprobar en la literatura científica ~\cite{baxter_yahin} que los proyectos de Scratch hacen uso extensivo del clonado lo cuál puede suponer una limitación a la hora de desarrollar habilidades del pensamiento computacional, especialmente, la abstracción.
 
-También se ha podido comprobar en la literatura científica~\cite{baxter_yahin} que los proyectos de Scratch hacen uso extensivo del clonado lo cuál puede suponer una limitación a la hora de desarrollar habilidades del pensamiento computacional, especialmente, la abstracción.
-
-FALTA POR DESARROLLAR.
+POR DESARROLLAR...
 
 \section{Consecución de objetivos}
 \label{sec:consecucion-objetivos}
@@ -959,7 +989,7 @@ FALTA POR DESARROLLAR.
 %  aspell --lang=es_ES -c memoria.tex
 %\end{verbatim}
 
-FALTA POR DESARROLLAR.
+POR DESARROLLAR...
 
 \section{Conocimientos aplicados}
 \label{sec:aplicacion}
@@ -974,19 +1004,19 @@ Durante el transcurso del grado, me percate que el éxito requiere de una combin
   \item Protocolos para la Transmisión de Audio y Vídeo en Internet
 \end{enumerate}
 
-FALTA POR DESARROLLAR.
+POR DESARROLLAR...
 
 \section{Conocimientos aprendidos}
 \label{sec:aprendizaje}
 
-FALTA POR DESARROLLAR.
+POR DESARROLLAR...
 
 
 \section{Trabajos futuros}
 \label{sec:trabajos_futuros}
 
 %El programa tiene un amplio rango de mejora a nivel de código y escalabilidad. 
-FALTA POR DESARROLLAR.
+POR DESARROLLAR...
 
 
 %Ningún proyecto ni software se termina, así que aquí vienen ideas y funcionalidades que estaría bien tener implementadas en el futuro.
