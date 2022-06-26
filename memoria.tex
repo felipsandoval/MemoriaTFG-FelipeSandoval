@@ -950,7 +950,15 @@ Different blocks: XX
 %Describe los experimentos y casos de test que tuviste que implementar para validar tus resultados. 
 %Incluye también los resultados de validación que permiten afirmar que tus resultados son correctos. 
 
-POR DESARROLLAR...
+Se creaban programas en scratch y se verificaba que estaba bien
+
+Se ejecuta sobre el test.sb3
+
+Se ejecuta sobre múltitud de ficheros hasta que ya no salen errores en los logs
+
+Hablar sobre los test unitarios
+
+Como resultado se obtiene
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -961,21 +969,13 @@ POR DESARROLLAR...
 \chapter{Conclusiones}
 \label{chap:conclusiones}
 
-Cuando empecé a aprender a programar en Scratch, una de las cosas que me llamó la atención fue la facilidad con la que se podía duplicar código. Al principio, no entendía realmente la importancia de esto, pero a medida que seguía aprendiendo más sobre este lenguaje, empecé a darme cuenta del impacto que esto tiene en el desarrollo de la abstracción. La razón por la que el código duplicado es un problema en Scratch es porque es un lenguaje de programación visual. Esto significa que el código no se escribe en texto sino que se crea encajando bloques de código, lo que facilita duplicar código por accidente.
+Cuando empecé a aprender a programar en Scratch, una de las cosas que me llamó la atención fue la facilidad con la que se podía duplicar código. Al principio, no entendía realmente la importancia de esto, pero a medida que seguía aprendiendo más sobre este lenguaje, empecé a darme cuenta del impacto que esto tiene en el desarrollo de la abstracción. La razón por la que el código duplicado es un problema en Scratch es porque es un lenguaje de programación visual. Esto significa que el código no se escribe en texto sino que se crea encajando bloques, lo que facilita su copia y pega, bien sea intencionada o por accidente.
 
-La abstracción es el proceso de ocultar complejidad detrás de una interfaz más simple. En Python, esto se consigue normalmente creando funciones o clases. Al abstraer los detalles de una parte concreta del código, hacemos que sea más fácil de entender y reutilizar. En Scratch, es un poco más complicado ya que la propia interfaz nos limita la reutilización de los bloques personalizados. Por ejemplo, si creamos una función elemental en el objeto ''personaje'' solamente podremos hacer uso de ella dentro de dicho objeto, obligando a crear nuevamente la función tantas veces como objetos se desee la implementen.
+La abstracción es el proceso de ocultar complejidad detrás de una interfaz más simple. En Python, esto se consigue normalmente creando funciones o clases. Al abstraer los detalles de una parte concreta del código, hacemos que sea más fácil de entender y reutilizar. En Scratch, es un poco más complicado ya que la propia interfaz nos limita la reutilización de los bloques personalizados. Por ejemplo, si creamos una función elemental en el objeto \textit{''personaje''} solamente podremos hacer uso de ella dentro de dicho objeto obligando a crear nuevamente la función tantas veces como objetos se desee la implementen.
 
-Por otro lado, el código duplicado es el que se repite varias veces en un programa. Esto puede ser un gran problema para la mantenibilidad porque si necesitamos cambiar el código, tendremos que cambiarlo en múltiples lugares, u objetos en este caso. Esto también puede conducir a errores si el código no se actualiza correctamente.
+Por otro lado, el código duplicado es el que se repite varias veces en un programa. Esto puede ser un gran problema para la mantenibilidad porque si necesitamos cambiar el código, tendremos que cambiarlo en múltiples lugares u objetos en este caso. Esto puede conducir a errores si el código no se actualiza correctamente.
 
-El principal beneficio de dominar un lenguaje de programación es poder plasmar las ideas que rondan tu cabeza, en un computador. Todos usamos computadoras, todos somos consumidores de contenidos, pero muy pocos los crean, y con Scratch – e igualmente con otras muchas herramientas – podemos formar parte de ese otro grupo minoritario de gente.
-Proyecto Scratch, un juego de pecesDecíamos antes que la programación es una excusa más, una herramienta que puede ser transversal siempre y cuando los proyectos a crear así lo sean. En la charla, Resnick cita su caso particular: una invitación para el Día de la Madre, algo que poco tiene que ver con el mundo de la programación. Decenas, cientos de usuarios podían haberla comprado en la tienda de la esquina, pero decidieron crear la suya propia en Scratch, y compartirla tanto con su pariente como con toda la comunidad. Y como estas invitaciones, millones de ideas: proyectos para Ciencias, Sociales, Lengua o Literatura, invitaciones para cumpleaños, bautizos o bodas, o incluso Curriculum Vitae made in Scratch. Y juegos, muchos juegos.
-Aunque ya han pasado unos cuantos años desde la grabación de la charla, las palabras de Resnick siguen estando a la orden del día. No está de más recordarlas, y si no las conoces y estás interesado en toda la cuestión de la programación en las escuelas, te recomiendo encarecidamente que hagas un hueco los dieciséis minutos y cuarenta y ocho segundos que dura, para estudiarla a fondo.
-
-En clustering no existe información a priori de la pertenencia de los patrones a un conjunto de clases predefinida. Esto representa un problema en la evaluación de los resultados obtenidos a través de diferentes métodos.
-
-\cite{wing_socialissues}
-
-POR DESARROLLAR...
+En la siguiente sección se debate sobre la consecución de los objetivos propuestos al inicio de este trabajo. 
 
 \section{Consecución de objetivos}
 \label{sec:consecucion-objetivos}
@@ -992,7 +992,15 @@ POR DESARROLLAR...
 %  aspell --lang=es_ES -c memoria.tex
 %\end{verbatim}
 
-POR DESARROLLAR...
+El objetivo principal era crear una herramienta que fuera capaz de detectar la duplicidad de código en Scratch. Se puede concluir y confirmar que se logra dicho objetivo ya que se desarrolla una aplicación interactiva, a través de línea de comandos, capaz de contabilizar bloques, sprites, scripts e identificar aquellos que se repitan, tanto a nivel \textit{intra-sprite} como \textit{project-wide}. También se reconocen los \textit{custom blocks} y se contabilizan sus llamadas dentro del programa y, a la vez, se pueden omitir, según indicación del usuario, los bloques contenidos en el fichero \textit{IgnoreBlocks.txt}.
+
+Toda la información sobre la duplicidad de código es mostrada a través de línea de comandos, de una forma legible y simplificada para que, con el código visual de Scratch, el usuario pueda hacer las correcciones pertinentes en su código redundante. 
+
+Además es esto, se realizan pruebas con más de 200 archivos JSON contenidos en el fichero \textit{projects.zip}, los cuales son analizados, sin errores, informando sobre los bloques que mayor duplicidad presentan cada uno de los proyectos.
+
+No existe una conclusión clara sobre la definición de patrones para detectar duplicidad de código, por lo menos no a nivel de programación. Esto se debe a que las pruebas han de realizarse con muchos mas proyectos, sin embargo, se propone su desarrollo en las futuras mejoras de los próximos trabajos.
+
+Por último se realizan pruebas unitarias del código, esto garantiza que el funcionamiento y la ejecución de las funciones desarrolladas es el correcto según los valores que reciba.
 
 \section{Conocimientos aplicados}
 \label{sec:aplicacion}
@@ -1018,27 +1026,28 @@ Quiero enumerar, por asignatura, las habilidades aprendidas que han facilitado l
 El desarrollo de este trabajo ha supuesto un gran reto, pues es el primer proyecto que he realizado de esta complejidad. Durante las distintas etapas de elaboración he adquirido una serie de aprendizajes y habilidades que, a continuación, comparto:
 
 \begin{itemize}
-\item La importancia del desarrollo computacional. Al amar tanto la programación me he podido percatar de la importancia del temprano desarrollo de estas habilidades en niños y niñas. Para que así puedan programar blabla
-\item El lenguaje de programación Scratch.
-\item La utilidad de las pruebas unitarias. Unittesting
-\item La facilidad de \LaTeX.
-\item Algoritmos de clustering en python. 
+\item La importancia del desarrollo del pensamiento computacional. Al amar tanto la programación me he podido percatar que el pensamiento computacional es fundamental para el manejo de la información, la solución de problemas y la comprensión del comportamiento humano y debe desarrollarse preferentemente desde edades tempranas. Su desarrollo mejorará la competitividad e innovación, a la vez que forma nuevas aptitudes y valores en los niños. \cite{wing_socialissues}
+\item La existencia de las pruebas unitarias, unittesting. De las lecciones que más me han marcado durante la realización de este proyecto, ya que su uso e implementación pasaran a ser fundamentales al momento de desarrollar software.
+\item El lenguaje de programación Scratch. Desconocía totalmente la existencia de este lenguaje y su aplicación gráfica, de haberlo conocido seguro que hubiera desarrollado mi pasión por la programación a una edad más temprana. Considero alta su importancia para dar ese primer contacto con el mundo digital y para pensar de forma lógica a la vez que se resuelven problemas de forma creativa.
+\item El uso de ficheros JSON y de archivos de log. He podido apreciar lo sumamente importante que es escribir y descifrar la información contenida en archivos JSON para entender la estructura de cualquier aplicación. También es importante la depuración de código a través de ficheros de control para así controlar y organizar los problemas que van surgiendo.  
+\item Algoritmos de clustering en Python. He tenido la oportunidad de leer y aprender sobre diversos algoritmos, comparándolos entre sí y ampliando mi conocimiento sobre el alcances y utilidad que puede tener el aprendizaje máquina. 
+\item La facilidad de \LaTeX. Aprender su estructura y semántica ha sido de gran utilidad para la maquetación de este trabajo.
 \end{itemize}
 
 
 \section{Trabajos futuros}
 \label{sec:trabajos_futuros}
 
-El software tiene un amplio rango de mejoras tanto a nivel de código como de funcionalidades. Se sugieren las siguiente implementaciones:
+El software tiene un amplio rango de mejoras tanto a nivel de código como de funcionalidades. Se sugieren las siguiente implementaciones para los próximos trabajos:
 
 \begin{itemize}
-\item Ampliar las pruebas haciendo uso de una base de datos con múltiples proyectos de Scratch.
-\item Dotar de feedback al usuario donde se le indique otras posibles combinaciones de sus bloques más duplicados.
-\item Mostrar gráficas dónde se muestren los bloques que mas suelen duplicarse.
-\item Crear una interfaz gráfica para facilitar su interacción y uso. Se podría desarrollar una aplicación web interactiva alojada en GitLab.
-\item Desarrollar la funcionalidad para reconocer duplicidad de \textit{custom blocks} tanto a nivel \textit{intra-sprite} como \textit{proyect-wide}.
-\item Integrar el software en la aplicación de Dr. Scratch. Esto habilitaría la posibilidad de obtener la cuantía sobre la duplicidad de código y puntuarlo. 
-\item Ampliar las pruebas con otros algoritmos de clustering. Se podría realizar un trabajo investigativo donde se compare la efectividad de varios algoritos, tanto de aprendizaje supervizado como aprendizaje no supervisado. Esto serviría para confirmar si efectivamente el algoritmo de propagación por afinidad es el más óptimo.
+\item Brindar información al usuario donde se le indique otras alternativas para reducir la duplicidad de bloques, sin alterar la lógica del funcionamiento.
+\item Mostrar gráficas, a modo informe, donde se muestren los bloques más duplicados basado en un estudio de múltiples proyectos.
+\item Crear una interfaz gráfica para facilitar la interacción y uso. Se podría desarrollar una aplicación web interactiva alojada en GitLab.\footnote{https://about.gitlab.com/blog/2016/04/07/gitlab-pages-setup/}
+\item Extender la funcionalidad de reconocimiento de bloques duplicados para reconocer la duplicidad de los \textit{custom blocks}, tanto a nivel \textit{intra-sprite} como \textit{proyect-wide}.
+\item Integrar la herramienta en la aplicación de Dr. Scratch. Esto permitiría cuantificar a través de una puntuación la duplicidad de código presente.
+\item Ampliar las conclusiones haciendo uso de una base de datos con infinidad de proyectos de Scratch.
+\item Ampliar pruebas con otros algoritmos de clustering. Se podría realizar un trabajo investigativo donde se compare la efectividad entre algoritmos de aprendizaje supervizado y de aprendizaje no supervisado. Esto serviría para confirmar si efectivamente el algoritmo de propagación por afinidad es el más óptimo.
 \end{itemize}
 
 
@@ -1098,6 +1107,8 @@ Para ejecutar el conjunto de test y verificar que las funciones, módulos y clas
 \begin{lstlisting}[style=consola,numbers=none]
 $ python3 -m unittest discover
 \end{lstlisting}
+
+\newpage 
 
 \subsection{Uso}
 
