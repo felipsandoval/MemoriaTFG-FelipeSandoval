@@ -626,15 +626,15 @@ En este capítulo se realiza una descripción detallada de la estructura del sof
 \section{Entorno y herramientas de trabajo} 
 \label{sec:entorno}
 
-Para poder obtener resultados confiables en múltiples entornos, se compila, ejecuta y depura el código en los sistemas operativos Windows e UNIX. Se hace uso de tres aplicaciones para mantener sincronizados ficheros, control de versiones y llevar un control sobre el planteamiento y la consecución de objetivos:
+Para poder obtener resultados confiables en múltiples entornos, se compila, ejecuta y depura el código en los sistemas operativos Windows e UNIX. Se hace uso de tres aplicaciones para mantener sincronizados ficheros, historial de versiones y tener un control sobre la consecución de objetivos:
 
 \begin{itemize}
-  \item \textbf{Trello:} Es usada para gestionar y organizar, a modo de tableros, las fases y tareas por realizar tanto a corto, medio y largo plazo. 
+  \item \textbf{Trello:} Aplicación usada para gestionar y organizar, a modo de tableros, las fases de las tareas a corto, medio y largo plazo. 
   \item \textbf{Dropbox:} Herramienta empleada como servicio de almacenamiento en la nube para mantener sincronizados ficheros, imágenes y referencias de la memoria.
-  \item \textbf{Github:} Es usada para alojar el código y mantener un control de versiones. Resulta muy útil para dar marcha atrás en caso de errores detectados mientras se avanza en la práctica, esto gracias al seguimiento de los cambios en el código
+  \item \textbf{Github:} Entorno usado para alojar el código y mantener un control de versiones. Resulta muy útil para dar marcha atrás en caso de errores o para crear nuevos hilos con modificaciones en el código.
 \end{itemize}
 
-En el diagrama de flujo de la imagen \ref{fig:diagrama_trabajo} se puede apreciar un diagrama del entorno y la comunicación entre las herramientas usadas.
+En la imagen \ref{fig:diagrama_trabajo} se puede apreciar un diagrama del entorno y la comunicación entre las herramientas usadas.
 
  \begin{figure}[!h]
     \centering
@@ -650,12 +650,12 @@ En el diagrama de flujo de la imagen \ref{fig:diagrama_trabajo} se puede aprecia
 
 %Si tu proyecto es un software, siempre es bueno poner la arquitectura (que es cómo se estructura tu programa a ``vista de pájaro'').
 
-A nivel general, el flujo del funcionamiento del programa es el que se puede apreciar en la imagen \ref{fig:fasedesejecucion}. El script a ejecutar es \textit{program.py} y de allí se irán concatenando llamadas a \textit{duplicatescripts.py}, \textit{most\_frequent\_blocks.py}, \textit{statistics.py} y finalmente, \textit{cluster.py}
+A nivel general, el flujo del funcionamiento del programa es el que se puede apreciar en la imagen \ref{fig:fasedesejecucion}. El script a ejecutar es \textit{program.py} y de allí se irán concatenando llamadas a \textit{duplicatescripts.py}, \textit{most\_frequent\_blocks.py}, \textit{statistics.py} y paralelamente, \textit{cluster.py}
 
 \begin{figure}[!htb]
   \centering
   \includegraphics[width=17cm, keepaspectratio]{img/flow.jpg}
-  \caption{Fase de extracción de datos}
+  \caption{Hilo de ejecución del programa}
   \label{fig:fasedesejecucion}
 \end{figure}
 
@@ -663,17 +663,19 @@ Para ejecutar el software es necesario que el usuario pase por línea de comando
 
 Los ficheros a analizar pueden estar en formato SB3 (extensión que emplea Scratch) en formato JSON o un fichero comprimido en formato ZIP. El software se ha desarrollado para ser escalable, por lo que, para realizar un análisis extensivo de muchos proyectos, es necesario comprimir los ficheros JSON en un contenedor ZIP. 
 
-A continuación, se detallan los scripts, funciones y clases relevantes del software desarrollado.
+A continuación, se detallan los scripts, funciones y clases relevantes del software.
 
 \subsection{program.py}
 
-Sirve como script principal. Su tarea principal es servir de hilo de ejecución de todo el programa, para ello extrae y parsea el contenido de ficheros JSON. En este programa se declara la forma como se escribirán los registros de control de ejecuciones en el archivo de logs, \textit{program\_logs.txt}, útil para depurar y encontrar excepciones durante la ejecución.
+Sirve como script principal. Su tarea es controlar el hilo de ejecución de todo el programa, para ello extrae y recorre el contenido de ficheros JSON. Esto es posible a través de las funciones \textbf{sb3\_json\_extraction} y \textbf{obtaining\_json}. En este script se declara la forma como se escribirán los registros de control de ejecuciones en el archivo de logs, \textit{program\_logs.txt}. Este fichero resulta muy útil para depurar y encontrar excepciones durante la ejecución.
 
 \subsection{duplicateScripts.py}
 
-Este programa toma como argumentos el nombre del fichero con su extensión correspondiente, el contenido del archivo JSON y el argumento opcional que indica si se ignorará, o no, ciertos tipos de bloques.
+Este script toma como argumentos el nombre del fichero con su extensión correspondiente, el contenido del archivo JSON y el argumento opcional que indica si se ignoraran, o no, ciertos tipos de bloques.
 
-El contenido del JSON se recorrerá a modo de diccionario, empezando por la clave \textit{targets} que contiene todos los objetos. Seguidamente se extrae la información relevante, según cada bloque, de la clave \textit{blocks}. En el código se irá almacenando, en una variable de tipo diccionario, la clave/valor: \textit{block\_id:opcode}, lo cual será importante para encontrar y añadir, en su posición correcta, a los bloques de control y personalizados. En la imagen \ref{fig:arboljson} se aprecia una vista de árbol general de las clave/valor del fichero JSON, y en la imagen \ref{fig:graljson} un diagrama de la estructura general de un bloque genérico.
+El contenido del JSON se recorrerá como un de diccionario, empezando por la clave \textit{targets} que contiene todos los objetos. Seguidamente se extrae la información relevante de la clave \textit{blocks}, según el tipo de bloque que sea. En el código se irá almacenando en una variable de tipo diccionario, la clave/valor: \textit{block\_id:opcode}, la cual será importante para encontrar y añadir en su posición correcta a los bloques de control y \textit{custom blocks}. En la imagen \ref{fig:arboljson} se puede apreciar una vista de árbol generalizada sobre las clave/valor del fichero JSON, que según cada tipo de bloque contendrá más o menos información. 
+
+Por otra parte, en la imagen \ref{fig:graljson} se puede apreciar un diagrama con la estructura general de un bloque genérico. Las claves de color amarillo siempre están presentes por lo que son importantes para organizar la estructura de mis bloques. Las claves de color verde no son importantes para la organización aunque aparezcan en todos los tipos de bloque. Las claves de color azul no siempre están presentes pero son igualmente importantes. Por último, las claves de color rojo no aparecen siempre y tampoco son relevantes.
 
 \begin{figure}[!htb]
   \centering
@@ -684,33 +686,41 @@ El contenido del JSON se recorrerá a modo de diccionario, empezando por la clav
 
 \begin{figure}[!htb]
   \centering
-  \includegraphics[width=17cm, keepaspectratio]{img/block_general.jpg}
+  \includegraphics[width=13cm, keepaspectratio]{img/block_general.jpg}
   \caption{Estructura general de un bloque genérico}
   \label{fig:graljson}
 \end{figure}
 
-
-Todas las categorías de bloques suelen tener una estructura similar pero no todos sus campos son relevantes. Las claves como \textbf{opcode}, \textbf{parent}, \textbf{next} y \textbf{topLevel} son esenciales para la organización y extracción de datos. Otras claves, como \textbf{inputs} y \textbf{mutation} no aparecen en todos los tipos de bloques, sin embargo, son igualmente imprescindibles para obtener el orden correcto en el conjunto de scripts. Es importante enfatizar que el \textit{Block\_ID} es un valor único por bloque, totalmente independiente del \textit{opcode}. A continuación, se enumeran los casos genéricos y particulares considerados:
+\newpage 
+Como indicamos en el apartado anterior, todos los tipos de bloques suelen tener una estructura similar pero no todos sus campos son relevantes. Las claves como \textbf{opcode}, \textbf{parent}, \textbf{next} y \textbf{topLevel} son esenciales para la organización y extracción de datos. Otras claves, como \textbf{inputs} y \textbf{mutation} no aparecen en todos los tipos de bloques, sin embargo, son igualmente imprescindibles para obtener el orden correcto del conjunto de scripts. Es importante enfatizar que el \textit{Block\_ID} es un valor \textbf{único por bloque}, totalmente independiente del \textit{opcode}. A continuación, se enumeran los casos genéricos y particulares considerados:
 
 \begin{enumerate}
+
 \item Si el valor de \textbf{topLevel} es True significa que el elemento es el primer bloque de mi script. En este caso el valor de la clave \textbf{parent} es null. 
+
 \item Si el valor de \textbf{topLevel} es False significa que el elemento no es el primer bloque. En este caso el valor de la clave \textbf{parent} contiene el \textit{Block\_ID} del bloque superior.
+
 \item La clave de \textbf{opcode} siempre tendrá como valor un string con el nombre de ese bloque.
-\item El valor de \textbf{next} puede ser un string con el \textit{Block\_ID} del siquiente bloque o puede ser null. En este último caso, puede ser porque es el último elemento del script, porque es un bloque de control (control\_repeat, control\_forever) o porque es un bloque definido por el usuario (custom\_block). En la imagen \ref{fig:loopsforever} se puede ver un ejemplo de esto.
-\item Dentro del valor \textbf{inputs} se encuentra otra clave llamada \textbf{substack} que contiene los elementos internos de los bloques de control (control\_repeat, control\_forever, control\_if, control\_repeat\_until y control\_if\_else). Este valor es exclúsivo de este tipo de bloques. En las imagenes \ref{fig:controlblock} y \ref{fig:scratch_control} se ejemplifican estos casos.
-\item Para el caso especial del bloque control\_if\_else el valor \textbf{substack2} contiene otra lista con la secuencia de bloques internas en el hilo condicional. En la imagen \ref{fig:controlblock_spe} se puede ver un ejemplo de la estructura del JSON y en la imagen \ref{fig:scratch_special} un script y sus elementos.
+
+
+\item El valor de \textbf{next} puede ser un string con el \textit{Block\_ID} del siquiente bloque o puede ser null. En este último caso, puede ser porque es el último elemento del script, porque es un bloque de control \textit{(control\_repeat, control\_forever)} o porque es un bloque definido por el usuario \textit{(custom\_block)}. En la imagen \ref{fig:loopsforever} se puede apreciar un diagrama con las claves y valores relevantes para este tipo de bloques.
+
+\item Dentro del valor \textbf{inputs} se encuentra otra clave llamada \textbf{substack} que contiene los elementos internos de los bloques de control (\textit{control\_repeat, control\_forever, control\_if, control\_repeat\_until y control\_if\_else)}. Este valor es exclúsivo de este tipo de bloques. En la imagen \ref{fig:controlblock} se ejemplifica este caso y en la imagen \ref{fig:scratch_control} se muestra la interfaz de Scratch, a modo de puzle, sobre el script y sus referencias en el JSON.
+
+\item Para el caso especial del bloque \textit{control\_if\_else} el valor \textbf{substack2} contiene una lista con la secuencia de bloques internas en el hilo condicional. En la imagen \ref{fig:controlblock_spe} se ejemplifica la estructura especial de este tipo de bloques y en la imagen \ref{fig:scratch_special} se aprecia la interfaz de Scratch.
+
 \item Se añaden las siguientes marcas de control al finalizar los siguientes bloques:
 \begin{itemize}
-\item Marca ''END\_IF'' al final de la primera condición de los bloques control\_if, control\_repeat\_until y control\_if\_else
-\item Marca ''END\_ELSE'' al final de la segunda condición del bloque control\_if\_else
-\item Marca ''END\_LOOP'' al final de todos los bloques de control
+\item Marca ''END\_IF'' al final de la primera condición de los bloques \textit{control\_if, control\_repeat\_until} y \textit{control\_if\_else}.
+\item Marca ''END\_ELSE'' al final de la segunda condición del bloque \textit{control\_if\_else}.
+\item Marca ''END\_LOOP'' al final de todos los bloques de control.
 \end{itemize}
 \end{enumerate}
 
 \begin{figure}
   \centering
   \includegraphics[width=15cm, keepaspectratio]{img/block_loop.jpg}
-  \caption{Estructura general de un bloque de tipo control\_repeat y control\_forever}
+  \caption{Estructura general de un bloque de tipo control\_repeat o control\_forever}
   \label{fig:loopsforever}
 \end{figure}
 
@@ -724,7 +734,7 @@ Todas las categorías de bloques suelen tener una estructura similar pero no tod
 \begin{figure}
   \centering
   \includegraphics[width=13cm, keepaspectratio]{img/scratch_control.jpg}
-  \caption{Script con bloques de control}
+  \caption{Script con bloque condicional de tipo control\_if}
   \label{fig:scratch_control}
 \end{figure}
 
@@ -763,35 +773,37 @@ Para los bloques personalizados por el usuario, los \textit{custom\_blocks}, se 
 
 \item Para elementos con \textbf{opcode} cuyo valor sea \textit{procedures\_call}:
 \begin{itemize}
-\item En su clave \textbf{mutation} se encuentra el nombre de la función lo que permitirá contabilizar el número de llamadas que se hagan.
+\item En su clave \textbf{mutation} se encuentra el nombre de la función lo que permitirá contabilizar el número de llamadas.
 \end{itemize}
 \end{enumerate}
 
+En las imágenes \ref{fig:block_prototype} y \ref{fig:block_definition} podemos apreciar un ejemplo sobre la estructura de las clave:valor que contiene el JSON. Por último, se realiza una comparación en la imagen \ref{fig:differences} sobre los distintos valores de cada bloque. Se aprecia que la información relevante para continuar con la organización secuencial está en \textit{procedures\_prototype} mientras que el contenido del custom block la tiene \textit{procedures\_definition}.
+
 \begin{figure}[!htb]
   \centering
-  \includegraphics[width=13cm, keepaspectratio]{img/block_prototype.jpg}
+  \includegraphics[width=10cm, keepaspectratio]{img/block_prototype.jpg}
   \caption{Estructura general de un bloque de tipo block\_prototype}
-  \label{fig:controlblock_spe}
+  \label{fig:block_prototype}
 \end{figure}
 
 \begin{figure}[!htb]
   \centering
-  \includegraphics[width=15cm, keepaspectratio]{img/block_definition.jpg}
+  \includegraphics[width=13cm, keepaspectratio]{img/block_definition.jpg}
   \caption{Estructura general de un bloque de tipo block\_definition}
-  \label{fig:controlblock_spe}
+  \label{fig:block_definition}
 \end{figure}
 
 \begin{figure}[!htb]
   \centering
-  \includegraphics[width=13cm, keepaspectratio]{img/scratch_custom.jpg}
-  \caption{Diferencias entres los bloques custom\_block}
-  \label{fig:scratch_special}
+  \includegraphics[width=14cm, keepaspectratio]{img/scratch_custom.jpg}
+  \caption{Diferencias entre tipos de bloques custom\_block}
+  \label{fig:differences}
 \end{figure}
 
 \newpage 
 Uno de los principales problemas al momento de analizar el JSON ha sido ordenar de forma correcta la estructura de bloques, ya que por defecto no se muestran de forma ordenada. Para lograrlo se crean dos diccionarios: \textit{scripts\_dict} que almacena como valor los bloques de cada sprite y el diccionario \textit{blocks\_dict} que almacena como clave el block\_id de cada bloque y como valor su opcode. Además, este último es esencial para insertar bloques según el block\_id del parent que le corresponda.
 
-Una vez se tiene todos los bloques de cada sprite ordenados se procede a obtener los bloques duplicados. Esto se logra gracias a la función \textbf{find\_dups}, que toma como argumento una lista de bloques. Puede ser, exclusiva para los bloques de cada objeto(\textit{intra-sprite})o para todos los bloques del proyecto (\textit{wide-project}). La función hace uso de la clase sequenceMatcher para comparar, palabra a palabra, cada bloque entre sí y devolver una lista con los bloque que mas se repitan. 
+Una vez se tiene todos los bloques de cada sprite ordenados se procede a obtener los bloques duplicados. Esto se logra gracias a la función \textbf{find\_dups}, que toma como argumento una lista de bloques. Puede ser, exclusiva para los bloques de cada objeto (\textit{intra-sprite})o para todos los bloques del proyecto (\textit{wide-project}). La función hace uso de la clase \textbf{sequenceMatcher} para comparar, palabra a palabra, cada bloque entre sí y devolver una lista con los bloque que más se repitan en cada iteración. 
 
 % IMAGEN DE CODIGO, MEJOR NO.
 %\begin{figure}
@@ -804,12 +816,12 @@ Una vez se tiene todos los bloques de cada sprite ordenados se procede a obtener
 \section{Obtención de datos} 
 \label{sec:obtenciondatos}
 
-Para finalizar la ejecución de \textbf{duplicateScripts.py}, se ejecuta la función \textbf{finalize} se genera tres ficheros de tipo JSON. En la imagen \ref{fig:flow_finddups} se puede apreciar un diagrama acerca la última fase de ejecución de este script.
+Para finalizar \textbf{duplicateScripts.py}, se ejecuta la función \textbf{finalize} que genera tres ficheros de tipo JSON. En la imagen \ref{fig:flow_finddups} se puede apreciar un diagrama acerca esta última fase de ejecución.
 
 \begin{itemize}
 \item ''filename''-sprite.json: Contendrá las cadena de bloques mas repetidos por objeto.
 \item ''filename''-project.json: Contendrá las cadena de bloques mas repetidos en todo el programa.
-\item ''filename''-custom.json: Contendrá las cadena de bloques personalizados mas repetidos en todo el programa.
+\item ''filename''-custom.json: Contendrá información relevante sobre los bloques personalizadoss presente en cada script, además del recuento de llamadas.
 \end{itemize}
 
 \begin{figure}[!htb]
@@ -849,8 +861,6 @@ Este script analiza los ficheros JSON generados por el código de \textbf{duplic
 
 Luego se añade el elemento al final de la lista block\_list. Finalmente, la lista block\_list se convierte en una cadena y se añade a la lista scripts. 
 
-La función json2dna devuelve la lista y... POR DESARROLLAR
-
 \begin{figure}[!htb]
   \centering
   \includegraphics[width=13cm, keepaspectratio]{img/flow_statistics.jpg}
@@ -863,23 +873,24 @@ La función json2dna devuelve la lista y... POR DESARROLLAR
 
 \subsection{cluster.py}
 
-El algoritmo que se emplea es el algoritmo de propagación de afinidad es un algoritmo de aprendizaje automático que se utiliza para encontrar patrones ocultos en datos no estructurados. Se basa en la idea de que los datos que se parecen a unos pocos puntos de datos son más probable que sean similares a otros puntos de datos. El algoritmo se ejecuta en iteraciones, en cada iteración, se seleccionan algunos puntos de datos y se les asignan etiquetas. Luego, el algoritmo busca otros puntos de datos que se parezcan a los puntos de datos etiquetados y les asigna las mismas etiquetas. El algoritmo continúa iterando hasta que todos los puntos de datos hayan sido etiquetados.
+El algoritmo que se emplea es el algoritmo de propagación por afinidad es un algoritmo de aprendizaje automático que se utiliza para encontrar patrones ocultos en datos no estructurados. Se basa en la idea de que los datos que se parecen a unos pocos puntos de datos son más probable que sean similares a otros puntos de datos. El algoritmo se ejecuta en iteraciones, en cada iteración, se seleccionan algunos puntos de datos y se les asignan etiquetas. Luego, el algoritmo busca otros puntos de datos que se parezcan a los puntos de datos etiquetados y les asigna las mismas etiquetas. El algoritmo continúa iterando hasta que todos los puntos de datos hayan sido etiquetados.
 
 El código de este script importa la función de levenshtein de la biblioteca distance y la función Counter de la biblioteca collections. Luego, define una función llamada json2dna que toma como argumento un archivo JSON y devuelve los scripts como caracteres. En la función main, el código convierte los scripts en una matriz y luego usa la función de levenshtein para calcular la similitud entre los scripts. Finalmente, el código imprime los resultados del clustering.
-
-La propagación de afinidad toma como entrada una colección de similitudes de valor real entre puntos de datos, donde la similitud s(i,k) indica
 
 \section{Visualización de resultados} 
 \label{sec:visualizacionresultados}
 
-Se visualizan los resultados por línea de comando de la siguiente forma:
+A continuación, un ejemplo genérico sobre como se visualizan los resultados por línea de comandos:
 
 \begin{lstlisting}[style=consola,numbers=none]
 *** STARTING ANALYSIS  ***
 
+/// IGNORING BLOCKS ACTIVATED /// 
+(se muestra solo si se pasa el argumento condicional -i)
+
 -- STARTING DUPLICATESCRIPTS.PY SCRIPT --
 
-Looking for duplicate blocks in (FILENAME)
+Looking for duplicate blocks in (nombre de archivo)
 
 Minimum number of blocks:  X
 
@@ -950,15 +961,13 @@ Different blocks: XX
 %Describe los experimentos y casos de test que tuviste que implementar para validar tus resultados. 
 %Incluye también los resultados de validación que permiten afirmar que tus resultados son correctos. 
 
-Se creaban programas en scratch y se verificaba que estaba bien
+La experimentación para este proyecto se ha desarrollado a modo de ensayo y error. Contaba con una serie de 200 ficheros para corroborar la correcta detección de las duplicidades. Al ejecutar la herramienta en estos ficheros se obtuvieron resultados satisfactorios, mostrando por pantalla la información de cada proyecto de manera satisfactoria.
 
 Se ejecuta sobre el test.sb3
 
-Se ejecuta sobre múltitud de ficheros hasta que ya no salen errores en los logs
+Se creaban programas en scratch y se comprueba que los resultados que muestra el programa son verídicos.
 
-Hablar sobre los test unitarios
-
-Como resultado se obtiene
+Para analizar la funcionalidad de mi código se crean los ficheros \textit{test\_program.py}, \textit{test\_DuplicateScripts.py} y \textit{test\_most\_frequent\_block.py}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
