@@ -961,13 +961,18 @@ Different blocks: XX
 %Describe los experimentos y casos de test que tuviste que implementar para validar tus resultados. 
 %Incluye también los resultados de validación que permiten afirmar que tus resultados son correctos. 
 
-La experimentación para este proyecto se ha desarrollado a modo de ensayo y error. Contaba con una serie de 200 ficheros para corroborar la correcta detección de las duplicidades. Al ejecutar la herramienta en estos ficheros se obtuvieron resultados satisfactorios, mostrando por pantalla la información de cada proyecto de manera satisfactoria.
+La experimentación para este proyecto se ha desarrollado a modo de ensayo y error. Primero, para probar la efectividad del código se crean muchos programas en Scratch, que de manera controlada contienen bloques de código duplicado con múltiples combinaciones a nivel \textit{intra-sprite} y \textit{wide-project}. Se ejecuta el programa varias veces y se evidencian las limitaciones al detectar estructuras complejas, imperfectos que poco a poco se va corrigiendo, hasta que los resultados coinciden con la información gráfica diseñada en Scratch. También se ejecuta la herramienta sobre un proyecto con multitud de objetos y bloques, el fichero \textbf{test.sb3} y se comprueba, al abrir el código en la interfaz de Scratch, que los resultados son verídicos.
 
-Se ejecuta sobre el test.sb3
+Luego se decide poner a prueba la herramienta a gran escala. Para lograrlo se repite la ejecución iterativa en 200 ficheros (\textit{projects.zip}). Al terminar la primera ejecución se comprueban que hay ciertos JSON que no son posibles de analizar, estos quedan registrados en el fichero de errores \textbf{program\_logs.txt}. Se analizan uno a uno los ficheros problemáticos y se descubre que existen casos particulares en los que ciertas claves, consideradas imprescindibles para la estructuración y organización, no aparecen en algunos bloques. Finalmente se depuran los errores de detección con la ayuda de las pruebas unitarias tratando cada caso de forma general. Se confirma la robustez del software al obtener un resultado exitoso en todos los ficheros sin importar las múltiples combinaciones que pueda contener.
 
-Se creaban programas en scratch y se comprueba que los resultados que muestra el programa son verídicos.
+Para analizar la funcionalidad y robustez de mi código se crean los ficheros \textit{test\_program.py}, \textit{test\_DuplicateScripts.py} y \textit{test\_most\_frequent\_block.py} en los cuales se comprueba la salida de funciones y clases de manera controlada. Por ejemplo, en el fichero \textit{test\_DuplicateScripts.py} se crea un test case sobre la función \textbf{get\_custominfo}. Cuando en los datos de entrada están incompletos, bien sea porque falta un campo o porque está mal escrito, se observa que la salida no es la deseada. Esto se puede apreciar con la clave ''proccode'' que es requerida en esta función. También se confirma que si la clave no aparece en el diccionario Python muestra una excepción de error de tipo \textbf{KeyError}. En la imagen \ref{fig:code_testduplicate} se puede apreciar un extracto del código con las pruebas descritas.
 
-Para analizar la funcionalidad de mi código se crean los ficheros \textit{test\_program.py}, \textit{test\_DuplicateScripts.py} y \textit{test\_most\_frequent\_block.py}
+\begin{figure}[!htb]
+  \centering
+  \includegraphics[width=13cm, keepaspectratio]{img/code_testduplicate.jpg}
+  \caption{Código de un test case sobre una función de duplicateScripts.py}
+  \label{fig:code_testduplicate}
+\end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
