@@ -159,7 +159,7 @@ Quiero agradecer a mis padres por su apoyo, comprensión, entendimiento y soport
 
 Gracias a ti, Nathalie, por escucharme y entenderme, por tu paciencia en momentos difíciles, por ayudarme a desconectar y por nunca dejar que tirase la toalla. Me demuestras que la motivación es importante pero que sin disciplina y sin hábitos de estudio, de poco vale. Estoy seguro que el futuro nos deparará momentos y vivencias memorables que podremos compartir. Te adoro.
 
-A mis amigos, gracias por su comprensión y por seguir contando conmigo para todos los planes. Son incontables las experiencias vividas y los \textit{''tours''} que hicimos en casi todas las bibliotecas de Madrid. Gracias por enseñarme que en equipo la universidad es más fácil.
+A mis amigos, gracias por su comprensión y por seguir contando conmigo para todos los planes. Son incontables las experiencias vividas y los \textit{``tours''} que hicimos en casi todas las bibliotecas de Madrid. Gracias por enseñarme que en equipo la universidad es más fácil.
 
 Por último quiero agradecer a mi tutor, Gregorio, por brindarme la oportunidad de trabajar junto a él y demostrarme que la enseñanza es un tema de vocación. Con este proyecto he ratificado la importancia de motivar y dotar de herramientas a las generaciones más jóvenes, ya que solo así será posible desarrollar su potencial profesional y humano. Muchas gracias por tu paciencia, amabilidad y tiempo, especialmente porque, a pesar de haber atravesado una pandemia mundial, al final hemos logrado salir adelante con este proyecto.
 
@@ -180,7 +180,7 @@ En este trabajo se busca desarrollar una herramienta capaz de extraer y detectar
 
 Esta idea surge a partir de otras herramientas que evalúan aspectos del pensamiento computacional, el cual abarca habilidades como el racionamiento lógico, la sincronización, el paralelismo, la representación de la información y la abstracción. Es el impacto de la duplicidad en esta última habilidad la que motiva la ejecución de este trabajo.
 
-La herramienta se desarrolla usando Python como principal tecnología. Durante el trabajo se realizarán tests unitarios y guías de estilo para mejorar la calidad del código. Por ultimo, se explicarán los resultados y analizarán, concluyendo si se consigue o no, los objetivos planteados.
+La herramienta se desarrolla usando Python como principal tecnología. Durante el trabajo se realizarán tests unitarios y guías de estilo para mejorar la calidad del código. Por último, se explicarán los resultados y analizarán, concluyendo si se consiguen o no, los objetivos planteados.
 
 
 %referencia https://www.um.es/ead/red/46/moreno_robles_es.pdf
@@ -233,17 +233,20 @@ The tool is developed using Python as the main technology. Through the work, uni
 
 %No te olvides de echarle un ojo a la página con los cinco errores de escritura más frecuentes\footnote{\url{http://www.tallerdeescritores.com/errores-de-escritura-frecuentes}}.
 
-En este trabajo se busca crear una herramienta que, a partir del análisis de bloques de código en Scratch, pueda dar una visión general sobre la duplicidad de código en un proyecto. Se entenderá por duplicidad de código aquellos bloques que se repitan tanto a nivel \textit{intra-sprite} como \textit{proyect-wide}, considerando que los baremos de penalización son distintos según cada caso. Esto es así por consecuencia de los límites de la propia aplicación que restringe la re-utilización de código entre objetos de forma eficiente.
+En este trabajo se busca crear una herramienta que, a partir del análisis de bloques de código en Scratch, pueda dar una visión general sobre la duplicidad de código en un proyecto. Se entenderá por duplicidad de código aquellos bloques que se repitan tanto a nivel \textit{intra-sprite} como \textit{project-wide}, considerando que los baremos de penalización son distintos según cada caso. Esto es así por consecuencia de los límites de la propia aplicación que restringe la re-utilización de código entre objetos de forma eficiente.
 
 Antes que nada, es importante explicar una serie de conceptos del glosario de Scratch\footnote{\url{https://en.scratch-wiki.info/wiki}}. 
+
+FIXME: yo aquí añadiría una figura para cada concpeto.
+
 \begin{itemize}
- \item Un bloque o \textit{block} es una pieza de código que ejecuta una acción. A nivel visual en la interfaz de Scratch, tienen formas de pieza de puzle con distintos colores y funcionalidades. Más adelante se detallan los distintos tipos de bloques y las consideraciones especiales a tener en cuenta.
+ \item Un bloque o \textit{block} es una pieza de código que ejecuta una acción. A nivel visual en la interfaz de Scratch, tienen formas de pieza de puzle con distintos colores y funcionalidades. Más adelante se detallan los distintos tipos de bloques y las consideraciones especiales a tener en cuenta. 
  \item Un \textit{sprite} son los objetos de mi proyecto. A nivel visual, un sprite puede ser el fondo de tu escenario o una imagen, a modo de personaje.
  \item Una función o \textit{script} es una colección de bloques. Su orden no es trivial, ya que determina cómo interactúan los \textit{sprites} entre sí, con el escenario y con el usuario. A nivel visual es una pila de varias piezas de puzle agrupadas.
- \item Un bloque personalizado o \textit{custom block} son las funciones definidas por el usuario. Este tipo de bloques permite crear funciones sin pensar en los tipos de bloques que contiene, por eso constituye una de las principales muestras de abstracción presentes en Scratch. También ayudan a reducir el tamaño de bloques del proyecto, ya que si un usuario tiene una larga cadena de código que sabe que usará mucho, tiene sentido usar un bloque personalizado. De esta manera, no se tiene que repetir código varias veces.\cite{scratchWeb}
-\end{itemize}
+ \item Un bloque personalizado o \textit{custom block} son las funciones definidas por el usuario. Este tipo de bloques permite crear funciones sin pensar en los tipos de bloques que contiene, por eso constituye una de las principales muestras de abstracción presentes en Scratch. También ayudan a reducir el tamaño de bloques del proyecto, ya que si un usuario tiene una larga cadena de código que sabe que usará mucho, tiene sentido usar un bloque personalizado. De esta manera, no se tiene que repetir código varias veces~\cite{scratchWeb}
+\end{itemize}.
 
-Para poder analizar la duplicidad de bloques de código en Scratch es necesario extraer la información del proyecto. Todos los datos de variables, objetos y bloques están contenidos en el fichero JSON dentro de la extensión SB3 que usa Scratch. Una vez se obtiene esta información es necesario procesar, según una serie de parámetros, los bloques que más se repiten. Luego, el análisis de dichos datos se realiza mediante la asignación de familias de grupos entre puntos de datos, mejor conocido como algoritmo de propagación por afinidad. Se emplea este algoritmo ya que considera cada punto de datos como un nodo en una red que recursivamente itera hasta tener un buen conjunto de ejemplares para clasificar grupos.\cite{clusteringpaper}
+Para poder analizar la duplicidad de bloques de código en Scratch es necesario extraer la información del proyecto. Todos los datos de variables, objetos y bloques están contenidos en el fichero JSON dentro de la extensión \emph{.sb3} que usa Scratch. Una vez se obtiene esta información es necesario procesar, según una serie de parámetros, los bloques que más se repiten. Luego, el análisis de dichos datos se realiza mediante la asignación de familias de grupos entre puntos de datos, mejor conocido como algoritmo de propagación por afinidad. Se emplea este algoritmo ya que considera cada punto de datos como un nodo en una red que recursivamente itera hasta tener un buen conjunto de ejemplares para clasificar grupos~\cite{clusteringpaper}.
 
 \section{Contexto Personal}
 \label{sec:contexto}
@@ -253,7 +256,7 @@ Como alumno del Grado de Ingeniería en Sistemas Audiovisuales y Multimedia (GIS
 \section{Motivación}
 \label{sec:motivacion}
 
-Según se ha podido comprobar en la literatura científica, a mayor existencia de duplicidad de código menos uso se hace de la abstracción, lo que ocasiona una mala síntesis en la descomposición de problemas. \cite{baxter_yahin} Los proyectos de Scratch hacen uso extensivo del clonado (p.ej. copia y pega) lo cuál puede suponer una limitación a la hora de desarrollar distintas habilidades del pensamiento computacional.
+Según se ha podido comprobar en la literatura científica, a mayor existencia de duplicidad de código menos uso se hace de la abstracción, lo que ocasiona una mala síntesis en la descomposición de problemas~\cite{baxter_yahin}. Los proyectos de Scratch hacen uso extensivo del clonado (p.ej. copia y pega) lo que puede suponer una limitación a la hora de desarrollar distintas habilidades del pensamiento computacional.
 
 Entendemos la abstracción como un proceso científico basado en dos fundamentos:
 \begin{itemize}
@@ -261,9 +264,9 @@ Entendemos la abstracción como un proceso científico basado en dos fundamentos
 \item Facilitar la proyección de técnicas que solucionen dichos problemas.
 \end{itemize}
 
-Cuando un programa es peque\~{n}o (p.ej. cientos de líneas de código), se puede obtener una solución basada en un único componente o función. Sin embargo, cuando el tama\~{n}o del problema aumenta el ser humano es incapaz de manejar tal cantidad de detalles y es necesaria una descomposición en peque\~{n}as partes independientes. La evolución de las herramientas de programación ha ido acompañada de un creciente uso de este conjunto de conceptos, lo que confirma a la abstracción como una aproximación efectiva para enfrentarse a problemas de gran complejidad. \cite{garridoabstraccion}
+Cuando un programa es peque\~{n}o (p.ej. cientos de líneas de código), se puede obtener una solución basada en un único componente o función. Sin embargo, cuando el tama\~{n}o del problema aumenta el ser humano es incapaz de manejar tal cantidad de detalles y es necesaria una descomposición en peque\~{n}as partes independientes. La evolución de las herramientas de programación ha ido acompañada de un creciente uso de este conjunto de conceptos, lo que confirma a la abstracción como una aproximación efectiva para enfrentarse a problemas de gran complejidad~\cite{garridoabstraccion}.
 
-Los mecanismos de abstracción, según René Zuñiga, son definidos en representación, descomposición y ensamble, utilizados durante la resolución de problemas computacionales en el contexto de programación orientada a niños y adolescentes. Sin embargo, se advierte la necesidad de pensar en dos tipos de soluciones como si se tratase de dos procesos de abstracción distintos, las centradas en el usuario y las centradas en las máquinas. \cite{munoz2014abstraccion}
+Los mecanismos de abstracción, según René Zuñiga, son definidos en representación, descomposición y ensamble, utilizados durante la resolución de problemas computacionales en el contexto de programación orientada a niños y adolescentes. Sin embargo, se advierte la necesidad de pensar en dos tipos de soluciones como si se tratase de dos procesos de abstracción distintos, las centradas en el usuario y las centradas en las máquinas~\cite{munoz2014abstraccion}.
 
 \section{Estructura de la memoria}
 \label{sec:estructura}
@@ -389,7 +392,9 @@ En este capítulo se introducen las bases tecnológicas del trabajo.
 \section{Scratch}
 \label{sec:Scratch}
 
-Scratch es un lenguaje de programación creado por el Grupo Lifelong Kindergarten del Laboratorio de Medios del MIT. En scratch se permite programar historias interactivas, videojuegos, felicitaciones, animaciones, entre otros; todo esto a través de un entorno completamente visual que se fundamenta en el uso de personajes, escenarios y bloques gráficos que permiten la interacción entre ellos.
+Scratch es un lenguaje de programación creado por el Grupo Lifelong Kindergarten del Laboratorio de Medios del MIT. En Scratch se permite programar historias interactivas, videojuegos, felicitaciones, animaciones, entre otros; todo esto a través de un entorno completamente visual que se fundamenta en el uso de personajes, escenarios y bloques gráficos que permiten la interacción entre ellos.
+
+FIXME: Aquí vendría bien una figura donde se vea Scratch
 
 Entre sus cualidades desatacan que es totalmente gratuito, de uso libre, multilenguaje y altamente recomendado para la iniciación de niños y adolescentes en el mundo de la programación. Scratch es, además, una gran comunidad de usuarios de los que se puede aprender y compartir proyectos. Los mayores consumidores de Scratch en el mundo son Estados Unidos y Reino Unido, donde los niños que más lo usan son los que tienen una edad media entre los 13 y los 16 años.
 
@@ -405,21 +410,23 @@ Como se comentó previamente, en Scratch, los objetos se denominan \textit{sprit
   	\item \underline{Custom blocks}: Bloques definidos por el usuario. A modo de comparativa, son funciones personalizadas que podrán ser invocadas a lo largo del código.
 \end{itemize}
 
-La forma de programar en Scratch permite al usuario aprender rápidamente sin tener que comprender la sintaxis del lenguaje, centrándose en la lógica del programa, lo que mejora la habilidad de abstracción del usuario. \cite{arotuma2017programacion}
+La forma de programar en Scratch permite al usuario aprender rápidamente sin tener que comprender la sintaxis del lenguaje, centrándose en la lógica del programa, lo que mejora la habilidad de abstracción del usuario\cite{arotuma2017programacion}.
 
 \section{JSON}
 \label{sec:Json}
 
-JavaScript Object Notation, mejor conocido como JSON, es un formato ligero de intercambio de datos que puede ser leído por cualquier persona. Este tipo de ficheros almacena información estructurada que es utilizada principalmente para transferir datos entre un servidor y un cliente. \cite{jsonWeb}
+JavaScript Object Notation, mejor conocido como JSON, es un formato ligero de intercambio de datos que puede ser leído por cualquier persona. Este tipo de ficheros almacena información estructurada que es utilizada principalmente para transferir datos entre un servidor y un cliente\cite{jsonWeb}.
 
 Teniendo en cuenta la sintaxis, existen dos elementos centrales en un fichero JSON \textit{Keys y Values}. Las \textit{Keys} o llaves, contienen una secuencia de caracteres rodeados de comillas y los \textit{Values} o claves, son un tipo de datos JSON válido. Puede tener la forma de un array, un diccionario, un string, un boolean, un objeto, un número o de tipo nulo. 
+
+FIXME: aquí vendría bien una figura con un trozo de JSON (y que se explicara en el texto)
 
 Es importante mencionar la estructura de un fichero JSON ya que es donde estará el código fuente de mi proyecto en Scratch.
 
 \section{Python}
 \label{sec:Python}
 
-Es un lenguaje de programación interpretado cuya filosofía enfatiza el tener una sintaxis sencilla favorecedora al código legible. Se trata así de un lenguaje de programación multiparadigma, ya que soporta la programación orientada a objetos, la programación imperativa y la programación funcional.\cite{pythonWeb} Python fue creado por Guido van Rossum a finales de los ochenta y su nombre se lo debe a los humoristas británicos \textit{“Monty Python”}. \footnote{https://platzi.com/blog/historia-python/}
+Es un lenguaje de programación interpretado cuya filosofía enfatiza el tener una sintaxis sencilla favorecedora al código legible. Se trata así de un lenguaje de programación multiparadigma, ya que soporta la programación orientada a objetos, la programación imperativa y la programación funcional~\cite{pythonWeb}. Python fue creado por Guido van Rossum a finales de los ochenta y su nombre se lo debe a los humoristas británicos \textit{`` Monty Python''}\footnote{https://platzi.com/blog/historia-python/}.
 
 Existen tres versiones principales de Python pero las más extendidas son las versiones 2 y 3, siendo la versión 3.10 la última actualización disponible. En este proyecto se hace un uso íntegro de la versión Python 3.9. Cabe recalcar que las versiones 2 y 3 son incompatibles entre sí por el gran número de diferencias que existen entre ellas.
 
@@ -432,13 +439,13 @@ Este proyecto se apoya en una serie de bibliotecas y módulos para Python. A con
 
 Módulo que permite interactuar con parámetros y funciones específicas del sistema. Es usado para solicitar argumentos por consola y para detener la ejecución del programa mostrando un mensaje por pantalla. También es usado para registrar la información de los mensajes de error en el fichero de log de eventos.
 
-\subsection{Os}
+\subsection{Os} 
 \label{sec:os}
 
 Módulo que permite trabajar, de forma portátil, con las funcionalidades del sistema operativo. En este proyecto se usa para eliminar ficheros JSON una vez han sido analizados, esto a fin de evitar crear excesivos documentos por cada ejecución.
 
 \subsection{Shutil}
-\label{sec:os}
+\label{sec:shutil}
 
 Módulo que ofrece varias operaciones de alto nivel en archivos y colecciones de archivos. Es usado para copiar ficheros dentro de la ruta donde se ejecute el script.
 
@@ -470,12 +477,12 @@ Módulo que implementa clases y funciones que ayudan a computar y trabajar con d
 \subsubsection{SequenceMatcher}
 \label{sec:difflib_SequenceMatcher} 
 
-Clase flexible que se usa para comparar pares de secuencias de cualquier tipo, siempre y cuando los elementos de la secuencia sean separables. Esta clase implementa un método heurístico que identifica automáticamente ciertos elementos como no deseados, para ello cuenta cuantas veces aparece cada elemento en la secuencia. Se usa para comparar secuencias en cadenas de caracteres. \cite{sequenceWeb}
+Clase flexible que se usa para comparar pares de secuencias de cualquier tipo, siempre y cuando los elementos de la secuencia sean separables. Esta clase implementa un método heurístico que identifica automáticamente ciertos elementos como no deseados, para ello cuenta cuantas veces aparece cada elemento en la secuencia. Se usa para comparar secuencias en cadenas de caracteres~\cite{sequenceWeb}.
 
 \subsection{collections}
 \label{sec:collections}
 
-Este módulo implementa tipos de datos que proporcionan alternativas a los contenedores integrados de uso general de Python, como diccionarios, listas, set, y tuplas.\cite{collectionWeb}
+Este módulo implementa tipos de datos que proporcionan alternativas a los contenedores integrados de uso general de Python, como diccionarios, listas, sets, y tuplas~\cite{collectionWeb}.
 
 \subsubsection{counter}
 \label{sec:difflib_counter}
@@ -495,7 +502,7 @@ Es una subclase del tipo de datos \textit{dict} que tiene métodos especializado
 \subsection{sklearn}
 \label{sec:sklearn}
 
-Este módulo es usado para ejecutar funciones y clases de Machine Learning construidas sobre SciPy.\cite{sklearnWeb} Cuenta con algoritmos de clasificación, regresión, clustering y reducción de dimensionalidad. Además, es compatible con otras librerías de Python como NumPy y matplotlib.
+Este módulo es usado para ejecutar funciones y clases de Machine Learning construidas sobre SciPy~\cite{sklearnWeb}. Cuenta con algoritmos de clasificación, regresión, clustering y reducción de dimensionalidad. Además, es compatible con otras librerías de Python como NumPy y matplotlib.
 
 \subsubsection{cluster}
 \label{sec:sklearn_cluster}
@@ -523,7 +530,7 @@ Aunque existen muchos algoritmos en esta subclase los más utilizados son K-medi
     \label{fig:affinitypropagation}
 \end{figure}
 
-En este trabajo se hará un uso exclusivo del algoritmo \textbf{Affinity Propagation} ya que, en teoría, es el más óptimo para la homogeneidad, integridad y similitud en conjuntos de cadenas de textos. \cite{areed2020python}
+En este trabajo se hará un uso exclusivo del algoritmo \textbf{Affinity Propagation} ya que, en teoría, es el más óptimo para la homogeneidad, integridad y similitud en conjuntos de cadenas de textos~\cite{areed2020python}.
 
 %A mí me gustan las tablas.
 %Mucho.
@@ -548,17 +555,17 @@ En este trabajo se hará un uso exclusivo del algoritmo \textbf{Affinity Propaga
 
 Hairball en un plugin de Python que analiza proyectos de Scratch, ofreciendo a su salida información sobre el nivel de habilidades del pensamiento computacional, como abstracción, paralelismo, lógica, sincronización, control de flujo, interactividad con el usuario y representación de los datos.
 
-El modulo hairball permite generar una representación gráfica sobre los datos de un proyecto Scratch. Esto es útil para visualizar el flujo de datos y el funcionamiento del programa. También otorga información sobre malos hábitos de programación cómo código duplicado, código muerto y mal nombramiento e inicialización de variables. \cite{boe2013hairball}
+El modulo hairball permite generar una representación gráfica sobre los datos de un proyecto Scratch. Esto es útil para visualizar el flujo de datos y el funcionamiento del programa. También otorga información sobre malos hábitos de programación cómo código duplicado, código muerto y mal nombramiento e inicialización de variables~\cite{boe2013hairball}.
 
 \section{Pip} 
 \label{sec:pip}
 
-Pip es un gestor de paquetes para el ecosistema de Python que es capaz de instalar y administrar paquetes mediante línea de comandos.\cite{pipWeb} Es el gestor con el que se han instalado todos los módulos y bibliotecas que no trae por defecto Python. Pip suele estar incluido al instalar Python, sin embargo, podría no ser así por lo que sería necesario su descarga.
+Pip es un gestor de paquetes para el ecosistema de Python que es capaz de instalar y administrar paquetes mediante línea de comandos~\cite{pipWeb}. Pip es el gestor con el que se han instalado todos los módulos y bibliotecas que no trae por defecto Python. Pip suele estar incluido al instalar Python, sin embargo, podría no ser así por lo que sería necesario su descarga.
 
 \section{Unittest} 
 \label{sec:unittest}
 
-Unittest es una herramienta empleada para realizar tests en Python, tanto para clases y módulos enteros como para scripts. Creada por Kent Beck, permite la automatización de tests y la opción de crear colecciones. Además, no está ligada a ningún marco de reportes por lo que nos permite utilizar el mas conveniente.\cite{unittestWeb} Para todo lo mencionado Unittest se sirve de tests fixtures, test cases, test suites y test runner, propios de la programación orientada a objetos, conceptos explicados a continuación. 
+Unittest es una herramienta empleada para realizar tests en Python, tanto para clases y módulos enteros como para scripts. Creada por Kent Beck, permite la automatización de tests y la opción de crear colecciones. Además, no está ligada a ningún marco de reportes por lo que nos permite utilizar el mas conveniente~\cite{unittestWeb}. Para todo lo mencionado Unittest se sirve de tests fixtures, test cases, test suites y test runner, propios de la programación orientada a objetos, conceptos explicados a continuación. 
 
 \begin{itemize}
 	\item \textbf{Test fixture}: es la preparación del entorno de todas las características del test que queremos ejecutar.
@@ -576,7 +583,7 @@ $ python3 -m unittest discover
 \section{Guía de estilo PEP8} 
 \label{sec:pep8}
 
-PEP8 (Python Enhancement Proposal 81) es una guía de estilos definida para Python. Se trata de un conjunto de recomendaciones cuyo objetivo es ayudar a escribir código de forma estándar y legible. \cite{pep8Web} Es la guía de estilo elegida porque se usó durante la elaboración de prácticas en la asignatura Protocolos de Transmisión de Audio y Vídeos por Internet (PTAVI). Algunas de las reglas más importantes de esta guía son:
+PEP8 (Python Enhancement Proposal 81) es una guía de estilos definida para Python. Se trata de un conjunto de recomendaciones cuyo objetivo es ayudar a escribir código de forma estándar y legible~\cite{pep8Web}. Es la guía de estilo elegida porque se usó durante la elaboración de prácticas en la asignatura Protocolos de Transmisión de Audio y Vídeos por Internet (PTAVI). Algunas de las reglas más importantes de esta guía son:
 
 \begin{itemize}
 	\item Indentación en cuatro espacios.
@@ -631,7 +638,7 @@ Para poder obtener resultados confiables en múltiples entornos, se compila, eje
 \begin{itemize}
   \item \textbf{Trello:} Aplicación usada para gestionar y organizar, a modo de tableros, las fases de las tareas a corto, medio y largo plazo. 
   \item \textbf{Dropbox:} Herramienta empleada como servicio de almacenamiento en la nube para mantener sincronizados ficheros, imágenes y referencias de la memoria.
-  \item \textbf{Github:} Entorno usado para alojar el código y mantener un control de versiones. Resulta muy útil para dar marcha atrás en caso de errores o para crear nuevos hilos con modificaciones en el código.
+  \item \textbf{GitHub:} Entorno usado para alojar el código y mantener un control de versiones. Resulta muy útil para dar marcha atrás en caso de errores o para crear nuevos hilos con modificaciones en el código.
 \end{itemize}
 
 En la imagen \ref{fig:diagrama_trabajo} se puede apreciar un diagrama del entorno y la comunicación entre las herramientas usadas.
@@ -711,9 +718,9 @@ Como indicamos en el apartado anterior, todos los tipos de bloques suelen tener 
 
 \item Se añaden las siguientes marcas de control al finalizar los siguientes bloques:
 \begin{itemize}
-\item Marca ''END\_IF'' al final de la primera condición de los bloques \textit{control\_if, control\_repeat\_until} y \textit{control\_if\_else}.
-\item Marca ''END\_ELSE'' al final de la segunda condición del bloque \textit{control\_if\_else}.
-\item Marca ''END\_LOOP'' al final de todos los bloques de control.
+\item Marca ``END\_IF'' al final de la primera condición de los bloques \textit{control\_if, control\_repeat\_until} y \textit{control\_if\_else}.
+\item Marca ``END\_ELSE'' al final de la segunda condición del bloque \textit{control\_if\_else}.
+\item Marca ``END\_LOOP'' al final de todos los bloques de control.
 \end{itemize}
 \end{enumerate}
 
@@ -819,9 +826,9 @@ Una vez se tiene todos los bloques de cada sprite ordenados se procede a obtener
 Para finalizar \textbf{duplicateScripts.py}, se ejecuta la función \textbf{finalize} que genera tres ficheros de tipo JSON. En la imagen \ref{fig:flow_finddups} se puede apreciar un diagrama acerca esta última fase de ejecución.
 
 \begin{itemize}
-\item ''filename''-sprite.json: Contendrá las cadena de bloques mas repetidos por objeto.
-\item ''filename''-project.json: Contendrá las cadena de bloques mas repetidos en todo el programa.
-\item ''filename''-custom.json: Contendrá información relevante sobre los bloques personalizadoss presente en cada script, además del recuento de llamadas.
+\item ``filename''-sprite.json: Contendrá las cadena de bloques mas repetidos por objeto.
+\item ``filename''-project.json: Contendrá las cadena de bloques mas repetidos en todo el programa.
+\item ``filename''-custom.json: Contendrá información relevante sobre los bloques personalizadoss presente en cada script, además del recuento de llamadas.
 \end{itemize}
 
 \begin{figure}[!htb]
@@ -965,7 +972,7 @@ La experimentación para este proyecto se ha desarrollado a modo de ensayo y err
 
 Luego se decide poner a prueba la herramienta a gran escala. Para lograrlo se repite la ejecución iterativa en 200 ficheros (\textit{projects.zip}). Al terminar la primera ejecución se comprueban que hay ciertos JSON que no son posibles de analizar, estos quedan registrados en el fichero de errores \textbf{program\_logs.txt}. Se analizan uno a uno los ficheros problemáticos y se descubre que existen casos particulares en los que ciertas claves, consideradas imprescindibles para la estructuración y organización, no aparecen en algunos bloques. Finalmente se depuran los errores de detección con la ayuda de las pruebas unitarias tratando cada caso de forma general. Se confirma la robustez del software al obtener un resultado exitoso en todos los ficheros sin importar las múltiples combinaciones que pueda contener.
 
-Para analizar la funcionalidad y robustez de mi código se crean los ficheros \textit{test\_program.py}, \textit{test\_DuplicateScripts.py} y \textit{test\_most\_frequent\_block.py} en los cuales se comprueba la salida de funciones y clases de manera controlada. Por ejemplo, en el fichero \textit{test\_DuplicateScripts.py} se crea un test case sobre la función \textbf{get\_custominfo}. Cuando en los datos de entrada están incompletos, bien sea porque falta un campo o porque está mal escrito, se observa que la salida no es la deseada. Esto se puede apreciar con la clave ''proccode'' que es requerida en esta función. También se confirma que si la clave no aparece en el diccionario Python muestra una excepción de error de tipo \textbf{KeyError}. En la imagen \ref{fig:code_testduplicate} se puede apreciar un extracto del código con las pruebas descritas.
+Para analizar la funcionalidad y robustez de mi código se crean los ficheros \textit{test\_program.py}, \textit{test\_DuplicateScripts.py} y \textit{test\_most\_frequent\_block.py} en los cuales se comprueba la salida de funciones y clases de manera controlada. Por ejemplo, en el fichero \textit{test\_DuplicateScripts.py} se crea un test case sobre la función \textbf{get\_custominfo}. Cuando en los datos de entrada están incompletos, bien sea porque falta un campo o porque está mal escrito, se observa que la salida no es la deseada. Esto se puede apreciar con la clave ``proccode'' que es requerida en esta función. También se confirma que si la clave no aparece en el diccionario Python muestra una excepción de error de tipo \textbf{KeyError}. En la imagen \ref{fig:code_testduplicate} se puede apreciar un extracto del código con las pruebas descritas.
 
 \begin{figure}[!htb]
   \centering
@@ -973,6 +980,8 @@ Para analizar la funcionalidad y robustez de mi código se crean los ficheros \t
   \caption{Código de un test case sobre una función de duplicateScripts.py}
   \label{fig:code_testduplicate}
 \end{figure}
+
+FIXME: quizás aquí habría que hablar algo del rendimiento!
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -985,7 +994,7 @@ Para analizar la funcionalidad y robustez de mi código se crean los ficheros \t
 
 Cuando empecé a aprender a programar en Scratch, una de las cosas que me llamó la atención fue la facilidad con la que se podía duplicar código. Al principio, no entendía realmente la importancia de esto, pero a medida que seguía aprendiendo más sobre este lenguaje, empecé a darme cuenta del impacto que esto tiene en el desarrollo de la abstracción. La razón por la que el código duplicado es un problema en Scratch es porque es un lenguaje de programación visual. Esto significa que el código no se escribe en texto sino que se crea encajando bloques, lo que facilita su copia y pega, bien sea intencionada o por accidente.
 
-La abstracción es el proceso de ocultar complejidad detrás de una interfaz más simple. En Python, esto se consigue normalmente creando funciones o clases. Al abstraer los detalles de una parte concreta del código, hacemos que sea más fácil de entender y reutilizar. En Scratch, es un poco más complicado ya que la propia interfaz nos limita la reutilización de los bloques personalizados. Por ejemplo, si creamos una función elemental en el objeto \textit{''personaje''} solamente podremos hacer uso de ella dentro de dicho objeto obligando a crear nuevamente la función tantas veces como objetos se desee la implementen.
+La abstracción es el proceso de ocultar complejidad detrás de una interfaz más simple. En Python, esto se consigue normalmente creando funciones o clases. Al abstraer los detalles de una parte concreta del código, hacemos que sea más fácil de entender y reutilizar. En Scratch, es un poco más complicado ya que la propia interfaz nos limita la reutilización de los bloques personalizados. Por ejemplo, si creamos una función elemental en el objeto \textit{``personaje''} solamente podremos hacer uso de ella dentro de dicho objeto obligando a crear nuevamente la función tantas veces como objetos se desee la implementen.
 
 Por otro lado, el código duplicado es el que se repite varias veces en un programa. Esto puede ser un gran problema para la mantenibilidad porque si necesitamos cambiar el código, tendremos que cambiarlo en múltiples lugares u objetos en este caso. Esto puede conducir a errores si el código no se actualiza correctamente.
 
@@ -1040,7 +1049,7 @@ Quiero enumerar, por asignatura, las habilidades aprendidas que han facilitado l
 El desarrollo de este trabajo ha supuesto un gran reto, pues es el primer proyecto que he realizado de esta complejidad. Durante las distintas etapas de elaboración he adquirido una serie de aprendizajes y habilidades que, a continuación, comparto:
 
 \begin{itemize}
-\item La importancia del desarrollo del pensamiento computacional. Al amar tanto la programación me he podido percatar que el pensamiento computacional es fundamental para el manejo de la información, la solución de problemas y la comprensión del comportamiento humano y debe desarrollarse preferentemente desde edades tempranas. Su desarrollo mejorará la competitividad e innovación, a la vez que forma nuevas aptitudes y valores en los niños. \cite{wing_socialissues}
+\item La importancia del desarrollo del pensamiento computacional. Al amar tanto la programación me he podido percatar que el pensamiento computacional es fundamental para el manejo de la información, la solución de problemas y la comprensión del comportamiento humano y debe desarrollarse preferentemente desde edades tempranas. Su desarrollo mejorará la competitividad e innovación, a la vez que forma nuevas aptitudes y valores en los niños~ \cite{wing_socialissues}.
 \item La existencia de las pruebas unitarias, unittesting. De las lecciones que más me han marcado durante la realización de este proyecto, ya que su uso e implementación pasaran a ser fundamentales al momento de desarrollar software.
 \item El lenguaje de programación Scratch. Desconocía totalmente la existencia de este lenguaje y su aplicación gráfica, de haberlo conocido seguro que hubiera desarrollado mi pasión por la programación a una edad más temprana. Considero alta su importancia para dar ese primer contacto con el mundo digital y para pensar de forma lógica a la vez que se resuelven problemas de forma creativa.
 \item El uso de ficheros JSON y de archivos de log. He podido apreciar lo sumamente importante que es escribir y descifrar la información contenida en archivos JSON para entender la estructura de cualquier aplicación. También es importante la depuración de código a través de ficheros de control para así controlar y organizar los problemas que van surgiendo.  
@@ -1058,7 +1067,7 @@ El software tiene un amplio rango de mejoras tanto a nivel de código como de fu
 \item Brindar información al usuario donde se le indique otras alternativas para reducir la duplicidad de bloques, sin alterar la lógica del funcionamiento.
 \item Mostrar gráficas, a modo informe, donde se muestren los bloques más duplicados basado en un estudio de múltiples proyectos.
 \item Crear una interfaz gráfica para facilitar la interacción y uso. Se podría desarrollar una aplicación web interactiva alojada en GitLab.\footnote{https://about.gitlab.com/blog/2016/04/07/gitlab-pages-setup/}
-\item Extender la funcionalidad de reconocimiento de bloques duplicados para reconocer la duplicidad de los \textit{custom blocks}, tanto a nivel \textit{intra-sprite} como \textit{proyect-wide}.
+\item Extender la funcionalidad de reconocimiento de bloques duplicados para reconocer la duplicidad de los \textit{custom blocks}, tanto a nivel \textit{intra-sprite} como \textit{project-wide}.
 \item Integrar la herramienta en la aplicación de Dr. Scratch. Esto permitiría cuantificar a través de una puntuación la duplicidad de código presente.
 \item Ampliar las conclusiones haciendo uso de una base de datos con infinidad de proyectos de Scratch.
 \item Ampliar pruebas con otros algoritmos de clustering. Se podría realizar un trabajo investigativo donde se compare la efectividad entre algoritmos de aprendizaje supervizado y de aprendizaje no supervisado. Esto serviría para confirmar si efectivamente el algoritmo de propagación por afinidad es el más óptimo.
