@@ -283,6 +283,12 @@ Antes que nada, es importante explicar una serie de conceptos del glosario de Sc
     \caption{Estructura de varios bloques y sus distintas formas}
     \label{fig:blocks}
 \end{figure} 
+
+FIXME: faltaría algún ejemplo de código repetido. Como esto es importante, podrían ser varios ejemplos en una subsección.
+ 
+FIXME: y faltaría comentar que los custom blocks sólo se pueden llamar dentro del mismo sprite. Por eso miramos intra-sprite y project-wide en nuestro análisis. La única manera de reutilizar dentro del proyecto es hacer copia y pega.
+
+FIMXE:  Deberías hablar de este artículo nuestro~\cite{robles2017software} que es el que dio pie a esto que estamos haciendo. En ese artículo presentamos los resultados de la correlación de la evaluación de las habilidades de TC de los alumnos con la presencia de clones de software en más de 230.000 proyectos obtenidos de la plataforma Scratch. Específicamente, investigamos i) si la clonación de software es una práctica extendida en proyectos Scratch, ii) si la presencia de clonación de código es independiente del dominio de programación de los alumnos, iii) si la clonación de código se puede encontrar con mayor frecuencia en proyectos Scratch que requieren habilidades (como el paralelismo o el pensamiento lógico), y iv) si los alumnos que tienen las habilidades para evitar la clonación de software realmente lo hacen. Los resultados muestran que i) la clonación de software se puede encontrar comúnmente en proyectos Scratch, que ii) se vuelve más frecuente a medida que los alumnos trabajan en proyectos que requieren habilidades avanzadas, que iii) no se encuentra ninguna dimensión de CT más relacionada con la ausencia de software clones que otros, y iv) que los alumnos, incluso si saben cómo evitar la clonación, todavía copian y pegan con frecuencia. Los conocimientos de este documento podrían ser utilizados por educadores y estudiantes para determinar cuándo es pedagógicamente más efectivo abordar la clonación de software, por desarrolladores de plataformas de programación educativa para adaptar sus sistemas y por herramientas de evaluación del aprendizaje para proporcionar mejores evaluaciones.
  
 \begin{figure}[htb!]
 	\centering
@@ -319,6 +325,7 @@ Entendemos la abstracción como un proceso científico basado en dos fundamentos
 Cuando un programa es peque\~{n}o (p.ej. cientos de líneas de código), se puede obtener una solución basada en un único componente o función. Sin embargo, cuando el tama\~{n}o del problema aumenta el ser humano es incapaz de manejar tal cantidad de detalles y es necesaria una descomposición en peque\~{n}as partes independientes. La evolución de las herramientas de programación ha ido acompañada de un creciente uso de este conjunto de conceptos, lo que confirma a la abstracción como una aproximación efectiva para enfrentarse a problemas de gran complejidad~\cite{garridoabstraccion}.
 
 Los mecanismos de abstracción, según René Zuñiga, son definidos en representación, descomposición y ensamble, utilizados durante la resolución de problemas computacionales en el contexto de programación orientada a niños y adolescentes. Sin embargo, se advierte la necesidad de pensar en dos tipos de soluciones como si se tratase de dos procesos de abstracción distintos, las centradas en el usuario y las centradas en las máquinas~\cite{munoz2014abstraccion}.
+
 
 \section{Estructura de la memoria}
 \label{sec:estructura}
@@ -1047,9 +1054,11 @@ Different blocks: XX
 %Describe los experimentos y casos de test que tuviste que implementar para validar tus resultados. 
 %Incluye también los resultados de validación que permiten afirmar que tus resultados son correctos. 
 
-La experimentación para este proyecto se ha desarrollado a modo de ensayo y error. Primero, para probar la efectividad del código se crean muchos programas en Scratch, que de manera controlada contienen bloques de código duplicado con múltiples combinaciones a nivel \textit{intra-sprite} y \textit{wide-project}. Se ejecuta el programa varias veces y se evidencian las limitaciones al detectar estructuras complejas, imperfectos que poco a poco se va corrigiendo, hasta que los resultados coinciden con la información gráfica diseñada en Scratch. También se ejecuta la herramienta sobre un proyecto con multitud de objetos y bloques, el fichero \textbf{test.sb3} y se comprueba, al abrir el código en la interfaz de Scratch, que los resultados son verídicos.
+La experimentación para este proyecto se ha desarrollado a modo de ensayo y error. Primero, para probar la efectividad del código se crean muchos programas en Scratch, que de manera controlada contienen bloques de código duplicado con múltiples combinaciones a nivel \textit{intra-sprite} y \textit{wide-project}. Se ejecuta el programa varias veces y se evidencian las limitaciones al detectar estructuras complejas, imperfectos que poco a poco se va corrigiendo, hasta que los resultados coinciden con la información gráfica diseñada en Scratch. También se ejecuta la herramienta sobre un proyecto con multitud de objetos y bloques, el fichero \textbf{test.sb3} y se comprueba, al abrir el código en la interfaz de Scratch, que los resultados son verídicos. FIXME: se debería mostrar qué contiene el fichero test.sb3, incluso con una captura de pantalla mostrando el código.
 
-Luego se decide poner a prueba la herramienta a gran escala. Para lograrlo se repite la ejecución iterativa en 200 ficheros (\textit{projects.zip}). Al terminar la primera ejecución se comprueban que hay ciertos JSON que no son posibles de analizar, estos quedan registrados en el fichero de errores \textbf{program\_logs.txt}. Se analizan uno a uno los ficheros problemáticos y se descubre que existen casos particulares en los que ciertas claves, consideradas imprescindibles para la estructuración y organización, no aparecen en algunos bloques. Finalmente se depuran los errores de detección con la ayuda de las pruebas unitarias tratando cada caso de forma general. Se confirma la robustez del software al obtener un resultado exitoso en todos los ficheros sin importar las múltiples combinaciones que pueda contener.
+Luego se decide poner a prueba la herramienta a gran escala. Para lograrlo se repite la ejecución iterativa en 200 ficheros (\textit{projects.zip}). FIXME: se debería presentar algo más estos 200 proyectos! (Se puede incluir alguna figura con esto)
+
+Al terminar la primera ejecución se comprueban que hay ciertos JSON que no son posibles de analizar, estos quedan registrados en el fichero de errores \textbf{program\_logs.txt}. Se analizan uno a uno los ficheros problemáticos y se descubre que existen casos particulares en los que ciertas claves, consideradas imprescindibles para la estructuración y organización, no aparecen en algunos bloques. Finalmente se depuran los errores de detección con la ayuda de las pruebas unitarias tratando cada caso de forma general. Se confirma la robustez del software al obtener un resultado exitoso en todos los ficheros sin importar las múltiples combinaciones que pueda contener.
 
 Para analizar la funcionalidad y robustez de mi código se crean los ficheros \textit{test\_program.py}, \textit{test\_DuplicateScripts.py} y \textit{test\_most\_frequent\_block.py} en los cuales se comprueba la salida de funciones y clases de manera controlada. Por ejemplo, en el fichero \textit{test\_DuplicateScripts.py} se crea un test case sobre la función \textbf{get\_custominfo}. Cuando en los datos de entrada están incompletos, bien sea porque falta un campo o porque está mal escrito, se observa que la salida no es la deseada. Esto se puede apreciar con la clave ``proccode'' que es requerida en esta función. También se confirma que si la clave no aparece en el diccionario Python muestra una excepción de error de tipo \textbf{KeyError}. En la imagen \ref{fig:code_testduplicate} se puede apreciar un extracto del código con las pruebas descritas.
 
@@ -1098,8 +1107,8 @@ En esta prueba se hace uso del módulo \textbf{Profile} que proporciona un conju
      Fichero y argumento & Resultado  \\ \hline % el hline nos da una línea vertical
 	\textit{test.sb3 -i}  & \textbf{37.228.046} llamadas en 15,990 s \\ \hline
     \textit{test.sb3}  & \textbf{57.851.803} llamadas en 23,745 s \\ \hline
-    \textit{project.zip -i} & 12.404797 s \\ \hline
-    \textit{project.zip} & 12.404797 s \\ \hline
+    \textit{project.zip -i} & FIXME: punto o coma? 12.404797 s \\ \hline
+    \textit{project.zip} & FIXME: punto o coma? 12.404797 s \\ \hline
   \end{tabular}
   \caption{Cuadro comparativo de los tiempos de ejecución con Profile\label{table:profile}}
  \end{center}
