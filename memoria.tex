@@ -244,9 +244,9 @@ The tool is developed using Python as the main technology. Through the work, uni
 %\addcontentsline{toc}{chapter}{Lista de figuras} % para que aparezca en el indice de contenidos
 \listoffigures % indice de figuras
 %%%% Índice de tablas
-%\cleardoublepage
-%\addcontentsline{toc}{chapter}{Lista de tablas} % para que aparezca en el indice de contenidos
-%\listoftables % indice de tablas
+\cleardoublepage
+\addcontentsline{toc}{chapter}{Lista de tablas} % para que aparezca en el indice de contenidos
+\listoftables % indice de tablas
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1060,7 +1060,53 @@ Para analizar la funcionalidad y robustez de mi código se crean los ficheros \t
   \label{fig:code_testduplicate}
 \end{figure}
 
-Para cuantificar el rendimiento
+\newpage 
+Para cuantificar el rendimiento es necesario realizar pruebas de velocidad y escalabilidad del software. Estas pruebas se hacen con el objetivo de obtener y comparar el tiempo de ejecución al ignorar, o no, ciertos tipos de bloques. Al momento de realizar las pruebas de rendimiento el resultado no siempre es exacto o fácil de interpretar, principalmente porque hay muchos factores que influyen en el valor que se obtiene. Por ejemplo, el rendimiento puede verse perjudicado por los procesos que el ordenador tenga en segundo plano, la velocidad de procesado del dispositivo, la capacidad de memoria en disco; entre otros.
+
+A continuación, se realizan dos pruebas de rendimiento, la primera con el módulo \textbf{datetime} y la segunda con el módulo \textbf{Profile}. 
+
+\subsubsection{Pruebas de rendimiento con datetime}
+
+Este tipo de prueba de \textit{``fuerza bruta''} consiste en restar el tiempo final de ejecución con el tiempo de inicio. En la tabla \ref{table:rendimiento} se puede apreciar una comparativa con los resultados al ejecutar tres veces los ficheros \textit{test.sb3} y \textit{projects.zip}. En la columna izquierda de la tabla se observa el tiempo de ejecución al no ignorar bloques \textit{(-i)} y en la columna derecha al hacerlo.
+
+\begin{table}[!htb]
+ \begin{center}
+  \begin{tabular}{ | c | c | c |} % tenemos tres colummnas, la primera alineada a la izquierda (l), la segunda al centro (c) y la tercera a la derecha (r). El | indica que entre las columnas habrá una línea separadora.
+   \hline
+	 & \multicolumn{2}{ | c |}{\textbf{Tiempo de ejecución}} \\ \hline
+     Fichero & Sin ignorar bloques & Ignorando bloques \\ \hline % el hline nos da una línea vertical
+      & 10,891 s & 08,598 s \\
+    \textit{test.sb3}  & 12,404 s & 10,096 s \\ 
+      & 11,958 s & 08,141 s \\ \hline
+      & 12 m 56,030 s  & 09 m 53,710 s \\
+    \textit{project.zip} & 17 m 33,782 s & 11 m 14,063 s \\
+      & 15 m 21,103 s & 10 m 49,338 s \\
+    \hline
+  \end{tabular}
+  \caption{Cuadro comparativo de los tiempos de ejecución con datetime\label{table:rendimiento}}
+ \end{center}
+\end{table}
+
+\subsubsection{Pruebas de rendimiento con Profile}
+
+En esta prueba se hace uso del módulo \textbf{Profile} que proporciona un conjunto de estadísticas que describen la frecuencia y el tiempo en el que se ejecutan varias partes del código~\cite{profileWeb}. Para facilitar la lectura e interpretación se muestra el resultado de forma resumida en la tabla \ref{table:profile} con el número de llamadas no inducidas por recursividad y el tiempo que tarda en ejecutarse.
+
+\begin{table}[!htb]
+ \begin{center}
+  \begin{tabular}{ | c | c |} % tenemos tres colummnas, la primera alineada a la izquierda (l), la segunda al centro (c) y la tercera a la derecha (r). El | indica que entre las columnas habrá una línea separadora.
+	\hline
+     Fichero y argumento & Resultado  \\ \hline % el hline nos da una línea vertical
+	\textit{test.sb3 -i}  & \textbf{37.228.046} llamadas en 15,990 s \\ \hline
+    \textit{test.sb3}  & \textbf{57.851.803} llamadas en 23,745 s \\ \hline
+    \textit{project.zip -i} & 12.404797 s \\ \hline
+    \textit{project.zip} & 12.404797 s \\ \hline
+  \end{tabular}
+  \caption{Cuadro comparativo de los tiempos de ejecución con Profile\label{table:profile}}
+ \end{center}
+\end{table}
+
+Se concluye que el software presenta mayor rendimiento al ejecutarse con el comando opcional \textbf{-i}, por lo tanto, ignorando ciertos de bloques. Esto se confirma, según el resultado mostrado en ambas tablas, porque ejecuta un menor número de llamadas a funciones en el código. Se recomienda ejecutar el programa de esta forma ya que además de garantizar mayor velocidad de ejecución, optimiza la información mostrada respecto a la duplicidad.
+
 % FIXME: quizás aquí habría que hablar algo del rendimiento!  
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1129,7 +1175,7 @@ Quiero enumerar, por asignatura, las habilidades aprendidas que han facilitado l
 El desarrollo de este trabajo ha supuesto un gran reto, pues es el primer proyecto que he realizado de esta complejidad. Durante las distintas etapas de elaboración he adquirido una serie de aprendizajes y habilidades que, a continuación, comparto:
 
 \begin{itemize}
-\item La importancia del desarrollo del pensamiento computacional. Al amar tanto la programación me he podido percatar que el pensamiento computacional es fundamental para el manejo de la información, la solución de problemas y la comprensión del comportamiento humano y debe desarrollarse preferentemente desde edades tempranas. Su desarrollo mejorará la competitividad e innovación, a la vez que forma nuevas aptitudes y valores en los niños~ \cite{wing_socialissues}.
+\item La importancia del desarrollo del pensamiento computacional. Al amar tanto la programación me he podido percatar que el pensamiento computacional es fundamental para el manejo de la información, la solución de problemas y la comprensión del comportamiento humano y debe desarrollarse preferentemente desde edades tempranas. Su desarrollo mejorará la competitividad e innovación, a la vez que forma nuevas aptitudes y valores en los niños~\cite{wing_socialissues}.
 \item La existencia de las pruebas unitarias, unittesting. De las lecciones que más me han marcado durante la realización de este proyecto, ya que su uso e implementación pasaran a ser fundamentales al momento de desarrollar software.
 \item El lenguaje de programación Scratch. Desconocía totalmente la existencia de este lenguaje y su aplicación gráfica, de haberlo conocido seguro que hubiera desarrollado mi pasión por la programación a una edad más temprana. Considero alta su importancia para dar ese primer contacto con el mundo digital y para pensar de forma lógica a la vez que se resuelven problemas de forma creativa.
 \item El uso de ficheros JSON y de archivos de log. He podido apreciar lo sumamente importante que es escribir y descifrar la información contenida en archivos JSON para entender la estructura de cualquier aplicación. También es importante la depuración de código a través de ficheros de control para así controlar y organizar los problemas que van surgiendo.  
