@@ -237,16 +237,37 @@ En este trabajo se busca crear una herramienta que, a partir del análisis de bl
 
 Antes que nada, es importante explicar una serie de conceptos del glosario de Scratch\footnote{\url{https://en.scratch-wiki.info/wiki}}. 
 
-FIXME: yo aquí añadiría una figura para cada concpeto.
+%FIXME: yo aquí añadiría una figura para cada concpeto.
 
 \begin{itemize}
- \item Un bloque o \textit{block} es una pieza de código que ejecuta una acción. A nivel visual en la interfaz de Scratch, tienen formas de pieza de puzle con distintos colores y funcionalidades. Más adelante se detallan los distintos tipos de bloques y las consideraciones especiales a tener en cuenta. 
- \item Un \textit{sprite} son los objetos de mi proyecto. A nivel visual, un sprite puede ser el fondo de tu escenario o una imagen, a modo de personaje.
+ \item Un bloque o \textit{block} es una pieza de código que ejecuta una acción. A nivel visual en la interfaz de Scratch, tienen formas de pieza de puzle con distintos colores y funcionalidades. En la imagen \ref{fig:blocks} se pueden apreciar varias estructuras de bloques. Más adelante se detallan los distintos tipos de bloques y las consideraciones especiales a tener en cuenta. 
+ \item Un \textit{sprite} son los objetos de mi proyecto. A nivel visual, un sprite puede ser el fondo de tu escenario o una imagen, a modo de personaje. En la imagen \ref{fig:scratchsprite} se puede apreciar un ejemplo de un \textit{sprite}.
  \item Una función o \textit{script} es una colección de bloques. Su orden no es trivial, ya que determina cómo interactúan los \textit{sprites} entre sí, con el escenario y con el usuario. A nivel visual es una pila de varias piezas de puzle agrupadas.
- \item Un bloque personalizado o \textit{custom block} son las funciones definidas por el usuario. Este tipo de bloques permite crear funciones sin pensar en los tipos de bloques que contiene, por eso constituye una de las principales muestras de abstracción presentes en Scratch. También ayudan a reducir el tamaño de bloques del proyecto, ya que si un usuario tiene una larga cadena de código que sabe que usará mucho, tiene sentido usar un bloque personalizado. De esta manera, no se tiene que repetir código varias veces~\cite{scratchWeb}
+ \item Un bloque personalizado o \textit{custom block} son las funciones definidas por el usuario. Este tipo de bloques permite crear funciones sin pensar en los tipos de bloques que contiene, por eso constituye una de las principales muestras de abstracción presentes en Scratch. También ayudan a reducir el tamaño de bloques del proyecto, ya que si un usuario tiene una larga cadena de código que sabe que usará mucho, tiene sentido usar un bloque personalizado. De esta manera, no se tiene que repetir código varias veces~\cite{scratchWeb}. En la imagen \ref{fig:script} se puede apreciar un \textit{custom block}, caracterizados por su color rosa, y un \textit{script}.
 \end{itemize}.
 
+\begin{figure}[htb!]
+	\centering
+    \includegraphics[width=7cm, keepaspectratio]{img/blocks.jpg}
+    \caption{Estructura de varios bloques y sus distintas formas}
+    \label{fig:blocks}
+\end{figure} 
+ 
+\begin{figure}[htb!]
+	\centering
+    \includegraphics[width=8cm, keepaspectratio]{img/scratchsprite.jpg}
+    \caption{Ejemplo de un sprite u objeto}
+    \label{fig:scratchsprite}
+\end{figure}
+
 Para poder analizar la duplicidad de bloques de código en Scratch es necesario extraer la información del proyecto. Todos los datos de variables, objetos y bloques están contenidos en el fichero JSON dentro de la extensión \emph{.sb3} que usa Scratch. Una vez se obtiene esta información es necesario procesar, según una serie de parámetros, los bloques que más se repiten. Luego, el análisis de dichos datos se realiza mediante la asignación de familias de grupos entre puntos de datos, mejor conocido como algoritmo de propagación por afinidad. Se emplea este algoritmo ya que considera cada punto de datos como un nodo en una red que recursivamente itera hasta tener un buen conjunto de ejemplares para clasificar grupos~\cite{clusteringpaper}.
+
+\begin{figure}[htb!]
+	\centering
+    \includegraphics[width=9cm, keepaspectratio]{img/script.jpg}
+    \caption{Ejemplo de un script y un custom block}
+    \label{fig:script}
+\end{figure}
 
 \section{Contexto Personal}
 \label{sec:contexto}
@@ -394,11 +415,11 @@ En este capítulo se introducen las bases tecnológicas del trabajo.
 
 Scratch es un lenguaje de programación creado por el Grupo Lifelong Kindergarten del Laboratorio de Medios del MIT. En Scratch se permite programar historias interactivas, videojuegos, felicitaciones, animaciones, entre otros; todo esto a través de un entorno completamente visual que se fundamenta en el uso de personajes, escenarios y bloques gráficos que permiten la interacción entre ellos.
 
-FIXME: Aquí vendría bien una figura donde se vea Scratch
+%FIXME: Aquí vendría bien una figura donde se vea Scratch
 
 Entre sus cualidades desatacan que es totalmente gratuito, de uso libre, multilenguaje y altamente recomendado para la iniciación de niños y adolescentes en el mundo de la programación. Scratch es, además, una gran comunidad de usuarios de los que se puede aprender y compartir proyectos. Los mayores consumidores de Scratch en el mundo son Estados Unidos y Reino Unido, donde los niños que más lo usan son los que tienen una edad media entre los 13 y los 16 años.
 
-Como se comentó previamente, en Scratch, los objetos se denominan \textit{sprites} y la parte visual es construida por piezas de puzle llamadas \textit{blocks} que al encajar entre sí forman funciones, conocidas como \textit{scripts}. Existen varias categorías de bloques, siendo de especial interés las siguientes: 
+Como se comentó previamente, en Scratch, los objetos se denominan \textit{sprites} y la parte visual es construida por piezas de puzle llamadas \textit{blocks} que al encajar entre sí forman funciones, conocidas como \textit{scripts}. En la imagen ~\ref{fig:scratch} se puede apreciar la pantalla principal de la interfaz gráfica de Scratch. Existen varias categorías de bloques, siendo de especial interés las siguientes: 
 
 \begin{itemize}
   	\item \underline{Movimiento}: Usados para mover y girar un objeto por la pantalla.
@@ -410,6 +431,13 @@ Como se comentó previamente, en Scratch, los objetos se denominan \textit{sprit
   	\item \underline{Custom blocks}: Bloques definidos por el usuario. A modo de comparativa, son funciones personalizadas que podrán ser invocadas a lo largo del código.
 \end{itemize}
 
+\begin{figure}[htb!]
+\centering
+\includegraphics[width=17cm, keepaspectratio]{img/scratch.jpg}
+\caption{Interfaz gráfica de Scratch}
+\label{fig:scratch}
+\end{figure}
+
 La forma de programar en Scratch permite al usuario aprender rápidamente sin tener que comprender la sintaxis del lenguaje, centrándose en la lógica del programa, lo que mejora la habilidad de abstracción del usuario\cite{arotuma2017programacion}.
 
 \section{JSON}
@@ -417,9 +445,8 @@ La forma de programar en Scratch permite al usuario aprender rápidamente sin te
 
 JavaScript Object Notation, mejor conocido como JSON, es un formato ligero de intercambio de datos que puede ser leído por cualquier persona. Este tipo de ficheros almacena información estructurada que es utilizada principalmente para transferir datos entre un servidor y un cliente\cite{jsonWeb}.
 
-Teniendo en cuenta la sintaxis, existen dos elementos centrales en un fichero JSON \textit{Keys y Values}. Las \textit{Keys} o llaves, contienen una secuencia de caracteres rodeados de comillas y los \textit{Values} o claves, son un tipo de datos JSON válido. Puede tener la forma de un array, un diccionario, un string, un boolean, un objeto, un número o de tipo nulo. 
+Teniendo en cuenta la sintaxis, existen dos elementos centrales en un fichero JSON \textit{Keys y Values}. Las \textit{Keys} o llaves, contienen una secuencia de caracteres rodeados de comillas y los \textit{Values} o claves, son un tipo de datos JSON válido. Puede tener la forma de un array, un diccionario, un string, un boolean, un objeto, un número o de tipo nulo. A modo ilustrativo, en el siguiente texto se puede apreciar un ejemplo de la estructura del formato JSON: %FIXME: aquí vendría bien una figura con un trozo de JSON (y que se explicara en el texto)
 
-FIXME: aquí vendría bien una figura con un trozo de JSON (y que se explicara en el texto)
 
 Es importante mencionar la estructura de un fichero JSON ya que es donde estará el código fuente de mi proyecto en Scratch.
 
@@ -981,7 +1008,7 @@ Para analizar la funcionalidad y robustez de mi código se crean los ficheros \t
   \label{fig:code_testduplicate}
 \end{figure}
 
-FIXME: quizás aquí habría que hablar algo del rendimiento!  
+% FIXME: quizás aquí habría que hablar algo del rendimiento!  
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
