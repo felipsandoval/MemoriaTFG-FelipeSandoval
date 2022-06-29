@@ -31,11 +31,42 @@
 \usepackage{latexsym}  %% Logo LaTeX
 \usepackage{listings}
 \usepackage{color}
+\usepackage{xcolor}
 \lstdefinestyle{consola} {
    numbers=none,
    backgroundcolor=\color{black},
    basicstyle=\small\bf\ttfamily\color{white}
 }
+
+\colorlet{punct}{red!60!black}
+\definecolor{background}{HTML}{EEEEEE}
+\definecolor{delim}{RGB}{20,105,176}
+\colorlet{numb}{magenta!60!black}
+
+\lstdefinelanguage{json}{
+    basicstyle=\normalfont\ttfamily,
+    showstringspaces=false,
+    breaklines=true,
+    literate=
+     *{0}{{{\color{numb}0}}}{1}
+      {1}{{{\color{numb}1}}}{1}
+      {2}{{{\color{numb}2}}}{1}
+      {3}{{{\color{numb}3}}}{1}
+      {4}{{{\color{numb}4}}}{1}
+      {5}{{{\color{numb}5}}}{1}
+      {6}{{{\color{numb}6}}}{1}
+      {7}{{{\color{numb}7}}}{1}
+      {8}{{{\color{numb}8}}}{1}
+      {9}{{{\color{numb}9}}}{1}
+      {:}{{{\color{punct}{:}}}}{1}
+      {,}{{{\color{punct}{,}}}}{1}
+      {\{}{{{\color{delim}{\{}}}}{1}
+      {\}}{{{\color{delim}{\}}}}}{1}
+      {[}{{{\color{delim}{[}}}}{1}
+      {]}{{{\color{delim}{]}}}}{1},
+}
+
+
 \title{Análisis de clonado y abstracción en Scratch}
 \author{Felipe Enmanuel Sandoval Sibada}
 
@@ -445,8 +476,29 @@ La forma de programar en Scratch permite al usuario aprender rápidamente sin te
 
 JavaScript Object Notation, mejor conocido como JSON, es un formato ligero de intercambio de datos que puede ser leído por cualquier persona. Este tipo de ficheros almacena información estructurada que es utilizada principalmente para transferir datos entre un servidor y un cliente\cite{jsonWeb}.
 
-Teniendo en cuenta la sintaxis, existen dos elementos centrales en un fichero JSON \textit{Keys y Values}. Las \textit{Keys} o llaves, contienen una secuencia de caracteres rodeados de comillas y los \textit{Values} o claves, son un tipo de datos JSON válido. Puede tener la forma de un array, un diccionario, un string, un boolean, un objeto, un número o de tipo nulo. A modo ilustrativo, en el siguiente texto se puede apreciar un ejemplo de la estructura del formato JSON: %FIXME: aquí vendría bien una figura con un trozo de JSON (y que se explicara en el texto)
+Teniendo en cuenta la sintaxis, existen dos elementos centrales en un fichero JSON \textit{Keys y Values}. Las \textit{Keys} o llaves contienen una secuencia de caracteres rodeados de comillas y los \textit{Values} o claves contienen un tipo de datos JSON válido, igualmente entre comillas. Puede tener la forma de un array, un diccionario, un string, un boolean, un objeto, un número o de tipo nulo. A modo ilustrativo, en el siguiente texto se puede apreciar un ejemplo de la estructura del formato JSON: %FIXME: aquí vendría bien una figura con un trozo de JSON (y que se explicara en el texto)
 
+\begin{lstlisting}[language=json]
+{
+  "datos":{
+    "objeto1": {
+      "opcode": "loop",
+      "blocks": [
+        "bloque1", 
+        "bloque2",
+        "bloque3"
+      ]
+    },
+    "objeto2": {
+      "opcode": "custom",
+      "blocks": [
+        "customA", 
+        "customB"
+      ]
+    }
+  }
+}
+\end{lstlisting}
 
 Es importante mencionar la estructura de un fichero JSON ya que es donde estará el código fuente de mi proyecto en Scratch.
 
@@ -1008,6 +1060,7 @@ Para analizar la funcionalidad y robustez de mi código se crean los ficheros \t
   \label{fig:code_testduplicate}
 \end{figure}
 
+Para cuantificar el rendimiento
 % FIXME: quizás aquí habría que hablar algo del rendimiento!  
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
