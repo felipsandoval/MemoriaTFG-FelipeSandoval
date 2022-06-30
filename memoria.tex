@@ -283,17 +283,13 @@ Antes que nada, es importante explicar una serie de conceptos del glosario de Sc
     \caption{Estructura de varios bloques y sus distintas formas}
     \label{fig:blocks}
 \end{figure} 
-
-FIXME: faltaría algún ejemplo de código repetido. Como esto es importante, podrían ser varios ejemplos en una subsección.
  
-FIXME: y faltaría comentar que los custom blocks sólo se pueden llamar dentro del mismo sprite. Por eso miramos intra-sprite y project-wide en nuestro análisis. La única manera de reutilizar dentro del proyecto es hacer copia y pega.
-
-FIMXE:  Deberías hablar de este artículo nuestro~\cite{robles2017software} que es el que dio pie a esto que estamos haciendo. En ese artículo presentamos los resultados de la correlación de la evaluación de las habilidades de TC de los alumnos con la presencia de clones de software en más de 230.000 proyectos obtenidos de la plataforma Scratch. Específicamente, investigamos i) si la clonación de software es una práctica extendida en proyectos Scratch, ii) si la presencia de clonación de código es independiente del dominio de programación de los alumnos, iii) si la clonación de código se puede encontrar con mayor frecuencia en proyectos Scratch que requieren habilidades (como el paralelismo o el pensamiento lógico), y iv) si los alumnos que tienen las habilidades para evitar la clonación de software realmente lo hacen. Los resultados muestran que i) la clonación de software se puede encontrar comúnmente en proyectos Scratch, que ii) se vuelve más frecuente a medida que los alumnos trabajan en proyectos que requieren habilidades avanzadas, que iii) no se encuentra ninguna dimensión de CT más relacionada con la ausencia de software clones que otros, y iv) que los alumnos, incluso si saben cómo evitar la clonación, todavía copian y pegan con frecuencia. Los conocimientos de este documento podrían ser utilizados por educadores y estudiantes para determinar cuándo es pedagógicamente más efectivo abordar la clonación de software, por desarrolladores de plataformas de programación educativa para adaptar sus sistemas y por herramientas de evaluación del aprendizaje para proporcionar mejores evaluaciones.
+Es importante destacar que los \textit{custom blocks}, debido al funcionamiento y diseño de Scratch, solo tienen utilidad dentro del \textit{sprite} dónde se definan. Es por esta razón que se realizan estudios \textit{intra-sprite} y \textit{project-wide}, ya que la única manera de reutilizar código entre en objetos es a través del copia y pega. %FIXME: y faltaría comentar que los custom blocks sólo se pueden llamar dentro del mismo sprite. Por eso miramos intra-sprite y project-wide en nuestro análisis. La única manera de reutilizar dentro del proyecto es hacer copia y pega.
  
 \begin{figure}[htb!]
 	\centering
     \includegraphics[width=8cm, keepaspectratio]{img/scratchsprite.jpg}
-    \caption{Ejemplo de un sprite u objeto}
+    \caption{Sprite u objeto}
     \label{fig:scratchsprite}
 \end{figure}
 
@@ -302,9 +298,42 @@ Para poder analizar la duplicidad de bloques de código en Scratch es necesario 
 \begin{figure}[htb!]
 	\centering
     \includegraphics[width=9cm, keepaspectratio]{img/script.jpg}
-    \caption{Ejemplo de un script y un custom block}
+    \caption{Script de un custom block}
     \label{fig:script}
 \end{figure}
+
+\subsubsection{Ejemplos de código duplicado}
+
+A continuación, a modo ilustrativo, se muestran varios casos de duplicidad. Las imágenes que ilustran esta sección se obtienen del fichero \textit{test.sb3}.
+
+\begin{itemize}
+\item En la imagen \ref{fig:duplicate_intrasprite} se observa un ejemplo de duplicidad de tipo \textit{intra-sprite}. En este caso ambos scripts realizan las mismas acciones con la diferencia que afectan a variables distintas.
+\item En la imagen \ref{fig:duplicate_projectwide} se observa un ejemplo de duplicidad a nivel \textit{project-wide}. La función mostrada realiza exactamente lo mismo pero en dos objetos diferentes.
+\item En la imagen \ref{fig:duplicate_customblock} se observa un ejemplo de duplicidad de dos \textit{custom blocks}. Como se comentó previamente, por limitaciones de la plataforma no es posible reutilizar bloques de código personalizados en varios \textit{sprites}, este caso lo ilustra perfectamente.
+\end{itemize}
+
+\begin{figure}[!htb]
+	\centering
+    \includegraphics[width=10cm, keepaspectratio]{img/duplicate_intrasprite.jpg}
+    \caption{Scripts duplicidados a nivel intra-sprite}
+    \label{fig:duplicate_intrasprite}
+\end{figure}
+
+\begin{figure}[!htb]
+	\centering
+    \includegraphics[width=13cm, keepaspectratio]{img/duplicate_projectwide.jpg}
+    \caption{Ejemplo de duplicidad project-wide}
+    \label{fig:duplicate_projectwide}
+\end{figure}
+
+\begin{figure}[!htb]
+	\centering
+    \includegraphics[width=13cm, keepaspectratio]{img/duplicate_customblock.jpg}
+    \caption{Duplicidad project-wide por limitaciones de Scratch}
+    \label{fig:duplicate_customblock}
+\end{figure}
+
+%FIXME: faltaría algún ejemplo de código repetido. Como esto es importante, podrían ser varios ejemplos en una subsección.
 
 \section{Contexto Personal}
 \label{sec:contexto}
@@ -316,15 +345,22 @@ Como alumno del Grado de Ingeniería en Sistemas Audiovisuales y Multimedia (GIS
 
 Según se ha podido comprobar en la literatura científica, a mayor existencia de duplicidad de código menos uso se hace de la abstracción, lo que ocasiona una mala síntesis en la descomposición de problemas~\cite{baxter_yahin}. Los proyectos de Scratch hacen uso extensivo del clonado (p.ej. copia y pega) lo que puede suponer una limitación a la hora de desarrollar distintas habilidades del pensamiento computacional.
 
-Entendemos la abstracción como un proceso científico basado en dos fundamentos:
-\begin{itemize}
-\item Definir un modelo que permita pensar y descomponer un problema fundamental en problemas mas sencillos.
-\item Facilitar la proyección de técnicas que solucionen dichos problemas.
-\end{itemize}
+Entendemos la abstracción como un proceso científico que busca, primero, definir un modelo que permita pensar y descomponer un problema fundamental en problemas mas sencillos, y segundo, facilitar la proyección de técnicas que solucionen dichos problemas. Los mecanismos de abstracción, según René Zuñiga~\cite{munoz2014abstraccion}, son definidos en representación, descomposición y ensamble, utilizados durante la resolución de problemas computacionales en el contexto de programación orientada a niños y adolescentes. Sin embargo, se advierte la necesidad de pensar en dos tipos de soluciones como si se tratase de dos procesos de abstracción distintos, las centradas en el usuario y las centradas en las máquinas.
 
 Cuando un programa es peque\~{n}o (p.ej. cientos de líneas de código), se puede obtener una solución basada en un único componente o función. Sin embargo, cuando el tama\~{n}o del problema aumenta el ser humano es incapaz de manejar tal cantidad de detalles y es necesaria una descomposición en peque\~{n}as partes independientes. La evolución de las herramientas de programación ha ido acompañada de un creciente uso de este conjunto de conceptos, lo que confirma a la abstracción como una aproximación efectiva para enfrentarse a problemas de gran complejidad~\cite{garridoabstraccion}.
 
-Los mecanismos de abstracción, según René Zuñiga, son definidos en representación, descomposición y ensamble, utilizados durante la resolución de problemas computacionales en el contexto de programación orientada a niños y adolescentes. Sin embargo, se advierte la necesidad de pensar en dos tipos de soluciones como si se tratase de dos procesos de abstracción distintos, las centradas en el usuario y las centradas en las máquinas~\cite{munoz2014abstraccion}.
+La motivación principal de este proyecto nace de los conocimientos planteados en el artículo \emph{Software Clones in Scratch Projects: On the Presence of Copy-and-Paste in Computational Thinking Learning}~\cite{robles2017software} del cual se obtienen como resultados los siguientes puntos:
+
+\begin{itemize}
+ \item La clonación de software se puede encontrar comúnmente en proyectos de Scratch.
+ \item La duplicidad se vuelve más frecuente a medida que los alumnos trabajan en proyectos que requieran habilidades avanzadas.
+ \item No se encuentra ninguna dimensión del pensamiento computacional más relacionada con la ausencia de software clones que otros.
+ \item Los alumnos, incluso si saben cómo evitar la clonación, todavía copian y pegan con frecuencia.
+ \end{itemize}
+
+Los conocimientos y conclusiones del citado documento podrían ser utilizados por educadores y estudiantes para determinar cuándo es pedagógicamente más efectivo abordar la clonación de software, por desarrolladores de plataformas de programación educativa para adaptar sus sistemas y por herramientas de evaluación del aprendizaje para proporcionar mejores evaluaciones. 
+
+%FIXME:  Deberías hablar de este artículo nuestro~\cite{robles2017software} que es el que dio pie a esto que estamos haciendo. En ese artículo presentamos los resultados de la correlación de la evaluación de las habilidades de TC de los alumnos con la presencia de clones de software en más de 230.000 proyectos obtenidos de la plataforma Scratch. Específicamente, investigamos i) si la clonación de software es una práctica extendida en proyectos Scratch, ii) si la presencia de clonación de código es independiente del dominio de programación de los alumnos, iii) si la clonación de código se puede encontrar con mayor frecuencia en proyectos Scratch que requieren habilidades (como el paralelismo o el pensamiento lógico), y iv) si los alumnos que tienen las habilidades para evitar la clonación de software realmente lo hacen. Los resultados muestran que i) la clonación de software se puede encontrar comúnmente en proyectos Scratch, que ii) se vuelve más frecuente a medida que los alumnos trabajan en proyectos que requieren habilidades avanzadas, que iii) no se encuentra ninguna dimensión de CT más relacionada con la ausencia de software clones que otros, y iv) que los alumnos, incluso si saben cómo evitar la clonación, todavía copian y pegan con frecuencia.
 
 
 \section{Estructura de la memoria}
@@ -796,7 +832,7 @@ Como indicamos en el apartado anterior, todos los tipos de bloques suelen tener 
 \item La clave de \textbf{opcode} siempre tendrá como valor un string con el nombre de ese bloque.
 
 
-\item El valor de \textbf{next} puede ser un string con el \textit{Block\_ID} del siquiente bloque o puede ser null. En este último caso, puede ser porque es el último elemento del script, porque es un bloque de control \textit{(control\_repeat, control\_forever)} o porque es un bloque definido por el usuario \textit{(custom\_block)}. En la imagen \ref{fig:loopsforever} se puede apreciar un diagrama con las claves y valores relevantes para este tipo de bloques.
+\item El valor de \textbf{next} puede ser un string con el \textit{Block\_ID} del siquiente bloque o puede ser null. En este último caso, puede ser porque es el último elemento del script, porque es un bloque de control \textit{(control\_repeat, control\_forever)} o porque es un bloque definido por el usuario \textit{(custom block)}. En la imagen \ref{fig:loopsforever} se puede apreciar un diagrama con las claves y valores relevantes para este tipo de bloques.
 
 \item Dentro del valor \textbf{inputs} se encuentra otra clave llamada \textbf{substack} que contiene los elementos internos de los bloques de control (\textit{control\_repeat, control\_forever, control\_if, control\_repeat\_until y control\_if\_else)}. Este valor es exclúsivo de este tipo de bloques. En la imagen \ref{fig:controlblock} se ejemplifica este caso y en la imagen \ref{fig:scratch_control} se muestra la interfaz de Scratch, a modo de puzle, sobre el script y sus referencias en el JSON.
 
@@ -846,7 +882,7 @@ Como indicamos en el apartado anterior, todos los tipos de bloques suelen tener 
 \end{figure}
 
 \newpage 
-Para los bloques personalizados por el usuario, los \textit{custom\_blocks}, se tienen en cuenta los tres siguientes casos:
+Para los bloques personalizados por el usuario, los \textit{custom blocks}, se tienen en cuenta los tres siguientes casos:
 
 \begin{enumerate}
 \item Para elementos con \textbf{opcode} cuyo valor sea \textit{procedures\_prototype}:
@@ -889,14 +925,14 @@ En las imágenes \ref{fig:block_prototype} y \ref{fig:block_definition} podemos 
 \begin{figure}[!htb]
   \centering
   \includegraphics[width=14cm, keepaspectratio]{img/scratch_custom.jpg}
-  \caption{Diferencias entre tipos de bloques custom\_block}
+  \caption{Diferencias entre tipos de bloques custom block}
   \label{fig:differences}
 \end{figure}
 
 \newpage 
 Uno de los principales problemas al momento de analizar el JSON ha sido ordenar de forma correcta la estructura de bloques, ya que por defecto no se muestran de forma ordenada. Para lograrlo se crean dos diccionarios: \textit{scripts\_dict} que almacena como valor los bloques de cada sprite y el diccionario \textit{blocks\_dict} que almacena como clave el block\_id de cada bloque y como valor su opcode. Además, este último es esencial para insertar bloques según el block\_id del parent que le corresponda.
 
-Una vez se tiene todos los bloques de cada sprite ordenados se procede a obtener los bloques duplicados. Esto se logra gracias a la función \textbf{find\_dups}, que toma como argumento una lista de bloques. Puede ser, exclusiva para los bloques de cada objeto (\textit{intra-sprite})o para todos los bloques del proyecto (\textit{wide-project}). La función hace uso de la clase \textbf{sequenceMatcher} para comparar, palabra a palabra, cada bloque entre sí y devolver una lista con los bloque que más se repitan en cada iteración. 
+Una vez se tiene todos los bloques de cada sprite ordenados se procede a obtener los bloques duplicados. Esto se logra gracias a la función \textbf{find\_dups}, que toma como argumento una lista de bloques. Puede ser, exclusiva para los bloques de cada objeto (\textit{intra-sprite})o para todos los bloques del proyecto (\textit{project-wide}). La función hace uso de la clase \textbf{sequenceMatcher} para comparar, palabra a palabra, cada bloque entre sí y devolver una lista con los bloque que más se repitan en cada iteración. 
 
 % IMAGEN DE CODIGO, MEJOR NO.
 %\begin{figure}
@@ -1054,11 +1090,29 @@ Different blocks: XX
 %Describe los experimentos y casos de test que tuviste que implementar para validar tus resultados. 
 %Incluye también los resultados de validación que permiten afirmar que tus resultados son correctos. 
 
-La experimentación para este proyecto se ha desarrollado a modo de ensayo y error. Primero, para probar la efectividad del código se crean muchos programas en Scratch, que de manera controlada contienen bloques de código duplicado con múltiples combinaciones a nivel \textit{intra-sprite} y \textit{wide-project}. Se ejecuta el programa varias veces y se evidencian las limitaciones al detectar estructuras complejas, imperfectos que poco a poco se va corrigiendo, hasta que los resultados coinciden con la información gráfica diseñada en Scratch. También se ejecuta la herramienta sobre un proyecto con multitud de objetos y bloques, el fichero \textbf{test.sb3} y se comprueba, al abrir el código en la interfaz de Scratch, que los resultados son verídicos. FIXME: se debería mostrar qué contiene el fichero test.sb3, incluso con una captura de pantalla mostrando el código.
+La experimentación para este proyecto se ha desarrollado a modo de ensayo y error. Primero, para probar la efectividad del código se crean muchos programas en Scratch, que de manera controlada contienen bloques de código duplicado con múltiples combinaciones a nivel \textit{intra-sprite} y \textit{project-wide}. Se ejecuta el programa varias veces y se evidencian las limitaciones al detectar estructuras complejas, imperfectos que poco a poco se va corrigiendo, hasta que los resultados coinciden con la información gráfica diseñada en Scratch. 
 
-Luego se decide poner a prueba la herramienta a gran escala. Para lograrlo se repite la ejecución iterativa en 200 ficheros (\textit{projects.zip}). FIXME: se debería presentar algo más estos 200 proyectos! (Se puede incluir alguna figura con esto)
+También se ejecuta la herramienta sobre un proyecto con multitud de objetos y bloques, el fichero \textbf{test.sb3} y se comprueba, al abrir el código en la interfaz de Scratch, que los resultados son verídicos. En la imagen \ref{fig:ficherosb3} se puede apreciar un extracto de código del archivo JSON contenido en el fichero \textit{test.sb3} que contiene 96 \textit{sprites}, 11.077 \textit{blocks}, 1.245 \textit{scripts} y 24 \textit{custom blocks}. %FIXME: se debería mostrar qué contiene el fichero test.sb3, incluso con una captura de pantalla mostrando el código.
 
-Al terminar la primera ejecución se comprueban que hay ciertos JSON que no son posibles de analizar, estos quedan registrados en el fichero de errores \textbf{program\_logs.txt}. Se analizan uno a uno los ficheros problemáticos y se descubre que existen casos particulares en los que ciertas claves, consideradas imprescindibles para la estructuración y organización, no aparecen en algunos bloques. Finalmente se depuran los errores de detección con la ayuda de las pruebas unitarias tratando cada caso de forma general. Se confirma la robustez del software al obtener un resultado exitoso en todos los ficheros sin importar las múltiples combinaciones que pueda contener.
+\begin{figure}[!htb]
+  \centering
+  \includegraphics[width=13cm, keepaspectratio]{img/jsoncontent.jpg}
+  \caption{Extracto del código del archivo JSON contenido en el fichero test.sb3}
+  \label{fig:ficherosb3}
+\end{figure}
+
+Luego se decide poner a prueba la herramienta a gran escala. Para lograrlo se repite la ejecución iterativa en 200 ficheros contenidos en el archivo \textit{projects.zip}. En la imagen \ref{fig:projectsfiles} se puede apreciar el contenido de dicho archivo. %FIXME: se debería presentar algo más estos 200 proyectos! (Se puede incluir alguna figura con esto)
+
+\begin{figure}[!htb]
+  \centering
+  \includegraphics[width=13cm, keepaspectratio]{img/projectsfiles.jpg}
+  \caption{Contenido del fichero projects.zip}
+  \label{fig:projectsfiles}
+\end{figure}
+
+Al terminar la primera ejecución se comprueban que hay ciertos JSON que no son posibles de analizar, estos quedan registrados en el fichero de errores \textbf{program\_logs.txt}. Se analizan uno a uno los ficheros problemáticos y se descubre que existen casos particulares en los que ciertas claves, consideradas imprescindibles para la estructuración y organización, no aparecen en algunos bloques. Finalmente se depuran los errores de detección con la ayuda de las pruebas unitarias tratando cada caso de forma general. 
+
+Se confirma la robustez del software al obtener un resultado exitoso en todos los ficheros sin importar las múltiples combinaciones que pueda contener.
 
 Para analizar la funcionalidad y robustez de mi código se crean los ficheros \textit{test\_program.py}, \textit{test\_DuplicateScripts.py} y \textit{test\_most\_frequent\_block.py} en los cuales se comprueba la salida de funciones y clases de manera controlada. Por ejemplo, en el fichero \textit{test\_DuplicateScripts.py} se crea un test case sobre la función \textbf{get\_custominfo}. Cuando en los datos de entrada están incompletos, bien sea porque falta un campo o porque está mal escrito, se observa que la salida no es la deseada. Esto se puede apreciar con la clave ``proccode'' que es requerida en esta función. También se confirma que si la clave no aparece en el diccionario Python muestra una excepción de error de tipo \textbf{KeyError}. En la imagen \ref{fig:code_testduplicate} se puede apreciar un extracto del código con las pruebas descritas.
 
