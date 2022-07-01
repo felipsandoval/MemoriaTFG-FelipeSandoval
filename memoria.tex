@@ -309,13 +309,13 @@ A continuación, a modo ilustrativo, se muestran varios casos de duplicidad. Las
 \begin{itemize}
 \item En la imagen \ref{fig:duplicate_intrasprite} se observa un ejemplo de duplicidad de tipo \textit{intra-sprite}. En este caso ambos scripts realizan las mismas acciones con la diferencia que afectan a variables distintas.
 \item En la imagen \ref{fig:duplicate_projectwide} se observa un ejemplo de duplicidad a nivel \textit{project-wide}. La función mostrada realiza exactamente lo mismo pero en dos objetos diferentes.
-\item En la imagen \ref{fig:duplicate_customblock} se observa un ejemplo de duplicidad de dos \textit{custom blocks}. Como se comentó previamente, por limitaciones de la plataforma no es posible reutilizar bloques de código personalizados en varios \textit{sprites}, este caso lo ilustra perfectamente.
+\item En la imagen \ref{fig:duplicate_customblock} se observa un ejemplo de duplicidad de dos \textit{custom blocks}. Como se comentó previamente, por limitaciones de la plataforma no es posible reutilizar bloques de código personalizados en varios \textit{sprites}. Este caso lo ilustra perfectamente.
 \end{itemize}
 
 \begin{figure}[!htb]
 	\centering
     \includegraphics[width=10cm, keepaspectratio]{img/duplicate_intrasprite.jpg}
-    \caption{Scripts duplicidados a nivel intra-sprite}
+    \caption{Scripts duplicados a nivel intra-sprite}
     \label{fig:duplicate_intrasprite}
 \end{figure}
 
@@ -375,7 +375,7 @@ Este trabajo se divide de la siguiente manera:
   	\item \textbf{Diseño e implementación:} En este capítulo se explica el funcionamiento del programa, desde la arquitectura que sigue hasta la explicación de las funciones y el hilo de ejecución.
   	\item \textbf{Experimentos, validaciones y resultados:} En este capítulo se profundiza en las pruebas realizadas, en los métodos de validación para el funcionamiento del código y en los resultados obtenidos.
   	\item \textbf{Conclusiones:} En este capítulo se muestran los objetivos conseguidos y se reflexiona sobre el futuro del proyecto.
-  	\item \textbf{Apéndice:} En este capítulo se detalla el manual del usuario así comos los requisitos para ejecutar el programa.  
+  	\item \textbf{Apéndice:} En este capítulo se detalla el manual del usuario así como los requisitos para ejecutar el programa.  
 \end{enumerate}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -431,7 +431,7 @@ Para alcanzar el objetivo principal se han perseguido los siguientes objetivos e
 %Hay gente que añade un diagrama de GANTT.
 %Lo importante es que quede claro cuánto tiempo llevas (tiempo natural, p.ej., 6 meses) y a qué nivel de %esfuerzo (p.ej., principalmente los fines de semana).
 
-La planificación de este trabajo ha sido bastante atípica si tomamos en cuenta la situación excepcional vivida desde el año 2020, producto de la pandemia causada por la COVID-19. En Marzo del 2021 contacté con Gregorio; mi tutor, y me presentó la idea de un proyecto relacionado con Scratch, sin embargo, no es hasta el mes de Abril que se da inicio con el trabajo investigativo y con el desarrollo de código en Python. Durante los meses de Abril a Mayo nos reunimos de forma telemática una vez a la semana para conversar sobre el estado del proyecto. Se vuelve a retomar el trabajo el siguiente curso escolar 2.021/2.022, comenzando nuevamente desde el mes de septiembre.
+La planificación de este trabajo ha sido bastante atípica si tomamos en cuenta la situación excepcional vivida desde el año 2020, producto de la pandemia causada por la COVID-19. En Marzo del 2021 contacté con Gregorio; mi tutor, y me presentó la idea de un proyecto relacionado con Scratch, sin embargo, no es hasta el mes de Abril que se da inicio con el trabajo de investigación y con el desarrollo de código en Python. Durante los meses de Abril a Mayo nos reunimos de forma telemática una vez a la semana para conversar sobre el estado del proyecto. Se vuelve a retomar el trabajo el siguiente curso escolar 2.021/2.022, comenzando nuevamente desde el mes de septiembre.
 
 A continuación, se puede visualizar en la figura \ref{fig:diagrama_gantt} el itinerario de planificación y desarrollo que refleja las fases y duración del proyecto en un diagrama de Gantt.
 
@@ -512,12 +512,12 @@ Como se comentó previamente, en Scratch, los objetos se denominan \textit{sprit
 \label{fig:scratch}
 \end{figure}
 
-La forma de programar en Scratch permite al usuario aprender rápidamente sin tener que comprender la sintaxis del lenguaje, centrándose en la lógica del programa, lo que mejora la habilidad de abstracción del usuario\cite{arotuma2017programacion}.
+La forma de programar en Scratch permite al usuario aprender rápidamente sin tener que comprender la sintaxis del lenguaje, centrándose en la lógica del programa, lo que mejora la habilidad de abstracción del usuario~\cite{arotuma2017programacion}.
 
 \section{JSON}
 \label{sec:Json}
 
-JavaScript Object Notation, mejor conocido como JSON, es un formato ligero de intercambio de datos que puede ser leído por cualquier persona. Este tipo de ficheros almacena información estructurada que es utilizada principalmente para transferir datos entre un servidor y un cliente\cite{jsonWeb}.
+JavaScript Object Notation, mejor conocido como JSON, es un formato ligero de intercambio de datos que puede ser leído por cualquier persona. Este tipo de ficheros almacena información estructurada que es utilizada principalmente para transferir datos entre un servidor y un cliente~\cite{jsonWeb}.
 
 Teniendo en cuenta la sintaxis, existen dos elementos centrales en un fichero JSON \textit{Keys y Values}. Las \textit{Keys} o llaves contienen una secuencia de caracteres rodeados de comillas y los \textit{Values} o claves contienen un tipo de datos JSON válido, igualmente entre comillas. Puede tener la forma de un array, un diccionario, un string, un boolean, un objeto, un número o de tipo nulo. A modo ilustrativo, en el siguiente texto se puede apreciar un ejemplo de la estructura del formato JSON: %FIXME: aquí vendría bien una figura con un trozo de JSON (y que se explicara en el texto)
 
@@ -705,7 +705,7 @@ $ python3 -m unittest discover
 \section{Guía de estilo PEP8} 
 \label{sec:pep8}
 
-PEP8 (Python Enhancement Proposal 81) es una guía de estilos definida para Python. Se trata de un conjunto de recomendaciones cuyo objetivo es ayudar a escribir código de forma estándar y legible~\cite{pep8Web}. Es la guía de estilo elegida porque se usó durante la elaboración de prácticas en la asignatura Protocolos de Transmisión de Audio y Vídeos por Internet (PTAVI). Algunas de las reglas más importantes de esta guía son:
+PEP8 (Python Enhancement Proposal 8) es una guía de estilos definida para Python. Se trata de un conjunto de recomendaciones cuyo objetivo es ayudar a escribir código de forma estándar y legible~\cite{pep8Web}. Es la guía de estilo elegida porque se usó durante la elaboración de prácticas en la asignatura Protocolos de Transmisión de Audio y Vídeos por Internet (PTAVI). Algunas de las reglas más importantes de esta guía son:
 
 \begin{itemize}
 	\item Indentación en cuatro espacios.
@@ -1208,11 +1208,11 @@ El objetivo principal era crear una herramienta que fuera capaz de detectar la d
 
 Toda la información sobre la duplicidad de código es mostrada a través de línea de comandos, de una forma legible y simplificada para que, con el código visual de Scratch, el usuario pueda hacer las correcciones pertinentes en su código redundante. 
 
-Además es esto, se realizan pruebas con más de 200 archivos JSON contenidos en el fichero \textit{projects.zip}, los cuales son analizados, sin errores, informando sobre los bloques que mayor duplicidad presentan cada uno de los proyectos.
+Además de esto, se realizan pruebas con más de 200 archivos JSON contenidos en el fichero \textit{projects.zip}, los cuales son analizados, sin errores, informando sobre los bloques que mayor duplicidad presentan cada uno de los proyectos.
 
 No existe una conclusión clara sobre la definición de patrones para detectar duplicidad de código, por lo menos no a nivel de programación. Esto se debe a que las pruebas han de realizarse con muchos mas proyectos, sin embargo, se propone su desarrollo en las futuras mejoras de los próximos trabajos.
 
-Por último se realizan pruebas unitarias del código, esto garantiza que el funcionamiento y la ejecución de las funciones desarrolladas es el correcto según los valores que reciba.
+Por último se realizan pruebas unitarias del código. Esto garantiza que el funcionamiento y la ejecución de las funciones desarrolladas es el correcto según los valores que reciba.
 
 \section{Conocimientos aplicados}
 \label{sec:aplicacion}
@@ -1232,15 +1232,15 @@ Quiero enumerar, por asignatura, las habilidades aprendidas que han facilitado l
 \item \textbf{Construcción de Servicios y Aplicaciones Audiovisuales en Internet:} En esta asignatura aprendí sobre el desarrollo de aplicaciones web en lenguajes como HTML5, CSS, JavaScript, Node y Electron. Aunque en este proyecto no he tenido la oportunidad de desarrollar una interfaz web gráfica, me permitió reforzar mi interés en las asignaturas enfocadas en la programación, sin importar el lenguaje a usar.
 \end{itemize}
 
-\section{Conocimientos aprendidos}
+\section{Conocimientos adquiridos}
 \label{sec:aprendizaje}
 
 El desarrollo de este trabajo ha supuesto un gran reto, pues es el primer proyecto que he realizado de esta complejidad. Durante las distintas etapas de elaboración he adquirido una serie de aprendizajes y habilidades que, a continuación, comparto:
 
 \begin{itemize}
 \item La importancia del desarrollo del pensamiento computacional. Al amar tanto la programación me he podido percatar que el pensamiento computacional es fundamental para el manejo de la información, la solución de problemas y la comprensión del comportamiento humano y debe desarrollarse preferentemente desde edades tempranas. Su desarrollo mejorará la competitividad e innovación, a la vez que forma nuevas aptitudes y valores en los niños~\cite{wing_socialissues}.
-\item La existencia de las pruebas unitarias, unittesting. De las lecciones que más me han marcado durante la realización de este proyecto, ya que su uso e implementación pasaran a ser fundamentales al momento de desarrollar software.
-\item El lenguaje de programación Scratch. Desconocía totalmente la existencia de este lenguaje y su aplicación gráfica, de haberlo conocido seguro que hubiera desarrollado mi pasión por la programación a una edad más temprana. Considero alta su importancia para dar ese primer contacto con el mundo digital y para pensar de forma lógica a la vez que se resuelven problemas de forma creativa.
+\item La existencia de las pruebas unitarias. De las lecciones que más me han marcado durante la realización de este proyecto, ya que su uso e implementación pasaran a ser fundamentales al momento de desarrollar software.
+\item El lenguaje de programación Scratch. Desconocía totalmente la existencia de este lenguaje y su aplicación gráfica. De haberlo conocido seguro que hubiera desarrollado mi pasión por la programación a una edad más temprana. Considero alta su importancia para dar ese primer contacto con el mundo digital y para pensar de forma lógica a la vez que se resuelven problemas de forma creativa.
 \item El uso de ficheros JSON y de archivos de log. He podido apreciar lo sumamente importante que es escribir y descifrar la información contenida en archivos JSON para entender la estructura de cualquier aplicación. También es importante la depuración de código a través de ficheros de control para así controlar y organizar los problemas que van surgiendo.  
 \item Algoritmos de clustering en Python. He tenido la oportunidad de leer y aprender sobre diversos algoritmos, comparándolos entre sí y ampliando mi conocimiento sobre el alcances y utilidad que puede tener el aprendizaje máquina. 
 \item La facilidad de \LaTeX. Aprender su estructura y semántica ha sido de gran utilidad para la maquetación de este trabajo.
@@ -1301,10 +1301,10 @@ El software tiene un amplio rango de mejoras tanto a nivel de código como de fu
 %Si has creado una aplicación, siempre viene bien tener un manual de usuario.
 %Pues ponlo aquí.
 
-\subsection{Descarga de ficheros}
+\section{Descarga de ficheros}
 El código del trabajo desarrollado se puede encontrar alojado en el siguiente repositorio de GitHub: \textbf{https://github.com/felipsandoval/duplicatescripts-scratch}
 
-\subsection{Requisitos}
+\section{Requisitos}
 
 Para poder hacer uso del programa es necesario tener instalado una serie de módulos y bibliotecas de Python. Para instalar todas estas dependencias es necesario ejecutar el siguiente comando:
 
@@ -1312,7 +1312,7 @@ Para poder hacer uso del programa es necesario tener instalado una serie de mód
 $ pip install -r requirements.txt
 \end{lstlisting}
 
-\subsection{Unittest}
+\section{Unittest}
 
 Para ejecutar el conjunto de test y verificar que las funciones, módulos y clases funcionan correctamente, es necesario ejecutar la siguiente orden por línea de comandos:
 
@@ -1322,7 +1322,7 @@ $ python3 -m unittest discover
 
 \newpage 
 
-\subsection{Uso}
+\section{Uso}
 
 \begin{lstlisting}[style=consola,numbers=none]
 $ python3  program.py  <fichero(.SB3 o .JSON o .ZIP)>  [-i]
